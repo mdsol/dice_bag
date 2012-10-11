@@ -47,9 +47,7 @@ module DiceBag
       template_filename = File.join(Rails.root, "config/#{template_name}.erb")
       config_filename = File.join(Rails.root, "config/#{template_name}")
 
-      unless File.exists?(template_filename)
-        fail "Template file '#{template_filename}' must exist to run this task"
-      end
+      return unless File.exists?(template_filename)
 
       # By passing "<>" we're trimming trailing newlines on lines that are
       # nothing but ERB blocks (see documentation). This is useful for files
