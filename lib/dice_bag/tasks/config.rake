@@ -7,7 +7,7 @@ task :config => 'config:all'
 namespace :config do
   # This is an alias for plain 'config' that can be called unabiguously from
   # within other namespaces.
-  task :all => ['config:cas', 'config:db', 'config:eureka', 'config:mauth']
+  task :all => ['config:cas', 'config:db', 'config:eureka', 'config:mauth', 'config:secret']
 
   desc "Create a cas.yml file from cas.yml.erb"
   task :cas do
@@ -28,5 +28,10 @@ namespace :config do
   task :mauth do
     DiceBag::Configuration.write('mauth_key')
     DiceBag::Configuration.write('mauth.yml')
+  end
+
+  desc "Create initializers/secret_token.rb file from initializers/secret_token.rb.erb"
+  task :secret do
+    DiceBag::Configuration.write('initializers/secret_token.rb')
   end
 end
