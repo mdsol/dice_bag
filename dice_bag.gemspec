@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
   s.test_files = Dir['spec/**/*']
   s.executables = Dir['bin/*'].map{ |f| File.basename(f) }
   s.require_paths = ['lib']
+  s.add_runtime_dependency "brakeman", ">= 1.8"
 end
