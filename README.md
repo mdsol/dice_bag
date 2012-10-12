@@ -51,6 +51,7 @@ namespaces:
   database.
 * Possibly move database migrations from `ci:config` to `config:db` (ask
   DevOps).
+* Add `config:generate:rails:db` or similar to spew out standard templates.
 
 ## Owners
 
