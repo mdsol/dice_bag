@@ -19,13 +19,13 @@ add the following to your `Gemfile` if you intend to use these tasks:
 
 ```ruby
 group :development, :test do
-  gem 'shamus', :git => 'git@github.com:mdsol/shamus.git'
-  gem 'brakeman'
+  gem 'shamus', :git => 'git@github.com:mdsol/shamus.git', :tag => '0.9.4'
+  gem 'brakeman', '~> 1.8'
 end
 ```
 
-No need to deploy these in production, so we scope them to the appropriate
-groups.
+You should specify versions appropriate for your project! No need to deploy
+these in production, so we scope them to the appropriate groups.
 
 If you are using these tasks outside of a Rails project, add the following to
 your `Rakefile` or wherever your local rake tasks are defined:
