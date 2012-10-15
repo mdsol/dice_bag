@@ -7,31 +7,16 @@ task :config => 'config:all'
 namespace :config do
   # This is an alias for plain 'config' that can be called unabiguously from
   # within other namespaces.
-  task :all => ['config:cas', 'config:db', 'config:eureka', 'config:mauth', 'config:secret']
-
-  desc "Create a cas.yml file from cas.yml.erb"
-  task :cas do
-    DiceBag::Configuration.write('cas.yml')
+  desc "Create all the files from their templates in config/"
+  task :all  do 
+    DiceBag::Configuration.write_all
   end
 
-  desc "Create a database.yml file from database.yml.erb"
-  task :db do
-    DiceBag::Configuration.write('database.yml')
+  desc "Recreate the file passed as parameter from its template"
+  task :file, :filename do |t, args|
+    filename = args[:filename]
+    raise "A filename needs to be provided" if filename.nil?
+    DiceBag::Configuration.write(filename)
   end
 
-  desc "Create eureka.yml file from eureka.yml.erb"
-  task :eureka do
-    DiceBag::Configuration.write('eureka.yml')
-  end
-
-  desc "Create a mauth_key and mauth.yml files from mauth_key.erb and mauth.yml.erb respectively"
-  task :mauth do
-    DiceBag::Configuration.write('mauth_key')
-    DiceBag::Configuration.write('mauth.yml')
-  end
-
-  desc "Create initializers/secret_token.rb file from initializers/secret_token.rb.erb"
-  task :secret do
-    DiceBag::Configuration.write('initializers/secret_token.rb')
-  end
 end
