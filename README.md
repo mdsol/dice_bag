@@ -54,6 +54,6 @@ namespaces:
 
 ## Owners
 
-* Andrew Smith
-* Jordi Polo
+* Andrew Smith  asmith@mdsol.com
+* Jordi Polo  jcarres@mdsol.com
 
