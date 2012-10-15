@@ -1,7 +1,16 @@
 desc "Configure and run continuous integration tests then clean up"
-task :ci => ['ci:config', 'ci:run', 'ci:clean']
+task :ci do 
+  begin
+    Rake::Task["ci:config"].invoke
+    Rake::Task["ci:run"].invoke
+    Rake::Task["ci:clean"].invoke
+  ensure
+    Rake::Task["ci:clean"].invoke
+  end
+end
 
 namespace :ci do
+
   desc "Configure the app to run continuous integration tests"
   # Could depend on 'db:schema:load' or 'db:setup' here instead of 'db:migrate'
   # if the 'db/schema.rb' file was commited to the repo (as per Rails
