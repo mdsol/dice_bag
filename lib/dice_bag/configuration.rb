@@ -43,6 +43,14 @@ module DiceBag
       end
     end
 
+    def self.write_all
+      template_names = File.join(Rails.root, "config/**/*.erb")
+      Dir[template_names].each do |template|
+        file_name = template.split("config/").last.gsub('.erb', '')
+        self.write(file_name)
+      end
+    end
+
     def self.write(template_name)
       template_filename = File.join(Rails.root, "config/#{template_name}.erb")
       config_filename = File.join(Rails.root, "config/#{template_name}")

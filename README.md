@@ -19,7 +19,7 @@ add the following to your `Gemfile` if you intend to use these tasks:
 
 ```ruby
 group :development, :test do
-  gem 'shamus', :git => 'git@github.com:mdsol/shamus.git', :tag => '0.9.4'
+  gem 'shamus', :git => 'git@github.com:mdsol/shamus.git', :tag => '0.9.6'
   gem 'brakeman', '~> 1.8'
 end
 ```
@@ -44,7 +44,6 @@ namespaces:
 ## TODO
 
 * Describe the template-and-environment-driven processing here.
-* Make the `config:all` task process all ERB template files present.
 * Make the `ci:run` task detect installed tools (but this is possibly a non-goal
   if we want to be opinionated about the CI tool-chain).
 * Make `config:db` use `db/schema.rb` if present rather than migrate a clean
@@ -55,5 +54,6 @@ namespaces:
 
 ## Owners
 
-* Andrew Smith
+* Andrew Smith  asmith@mdsol.com
+* Jordi Polo  jcarres@mdsol.com
 
