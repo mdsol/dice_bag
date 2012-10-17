@@ -1,9 +1,8 @@
 desc "Configure and run continuous integration tests then clean up"
-task :ci do 
+task :ci do
   begin
     Rake::Task["ci:config"].invoke
     Rake::Task["ci:run"].invoke
-    Rake::Task["ci:clean"].invoke
   ensure
     Rake::Task["ci:clean"].invoke
   end
