@@ -41,6 +41,35 @@ namespaces:
 [bundle exec] rake -T
 ```
 
+### Setting commit status in GitHub
+
+The main `ci` task will update the current `HEAD` commit in the associated
+GitHub repo. To do so, a [GitHub OAuth][go] authorization token is required and
+must be provided in the `GITHUB_AUTH_TOKEN` environment variable, for example:
+
+[go]: http://developer.github.com/v3/oauth/
+
+```
+[bundle exec] rake GITHUB_AUTH_TOKEN=123... ci
+```
+
+CI servers like Jenkins let you set system-wide environment variables, saving
+the need of specifying this in every job. The status update is skipped if no
+token is provided.
+
+Create an authorization token with the following command:
+
+```
+curl -u <username> -d '{"scopes":["repo:status"],"note":"CI status updater"}' https://api.github.com/authorizations
+```
+
+You will be prompted for your GitHub account password.
+
+The token is restricted to updating commit status only. The token is associated
+to the given user, as are any commit statuses created using it. The note given
+is the display name used in the GitHub account management pages and tokens can
+be revoked from there.
+
 ## TODO
 
 * Describe the template-and-environment-driven processing here.
