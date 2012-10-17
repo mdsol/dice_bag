@@ -1,3 +1,5 @@
+require 'dice_bag/github'
+
 desc "Configure and run continuous integration tests then clean up"
 task :ci do
   begin
@@ -33,6 +35,21 @@ namespace :ci do
   task :brakeman do
     # Make warnings fail the build with the '--exit-on-warn' switch.
     sh('bundle exec brakeman --quiet --exit-on-warn')
+  end
+
+  namespace :status do
+
+    config = DiceBag::Configuration.new
+
+    task :pending do
+      DiceBag::GitHub.update_commit_status('pending', config)
+    end
+    task :success do
+      DiceBag::GitHub.update_commit_status('success', config)
+    end
+    task :failure do
+      DiceBag::GitHub.update_commit_status('failure', config)
+    end
   end
 end
 
