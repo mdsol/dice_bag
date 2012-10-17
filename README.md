@@ -83,6 +83,6 @@ be revoked from there.
 
 ## Owners
 
-* Andrew Smith  asmith@mdsol.com
-* Jordi Polo  jcarres@mdsol.com
+* [Andrew Smith](mailto:asmith@mdsol.com)
+* [Jordi Polo](mailto:jcarres@mdsol.com)
 
