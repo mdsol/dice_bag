@@ -70,6 +70,16 @@ to the given user, as are any commit statuses created using it. The note given
 is the display name used in the GitHub account management pages and tokens can
 be revoked from there.
 
+The commit status created uses the `BUILD_NUMBER` and `BUILD_URL` environment
+variables as [provided by Jenkins][je]. Alternatively, these can be provided or
+overridden on the command line, for example:
+
+```
+[bundle exec] rake BUILD_NUMBER=$MY_BUILD_NUM BUILD_URL=http://example.com/url ci
+```
+
+[je]: https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables
+
 ## TODO
 
 * Describe the template-and-environment-driven processing here.
