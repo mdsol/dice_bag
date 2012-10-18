@@ -10,6 +10,12 @@ module DiceBag
   module GitHub
     extend self
 
+    # Update the commit status for the current HEAD commit. Assumes the working
+    # directory is a git repo and the "origin" remote points to a GitHub repo.
+    # The +state+ variable must be one of :pending, :success or :failure. The
+    # +config+ object must respond to +build_number+, +build_url+ and
+    # +github_auth_token+.
+    #
     def update_commit_status(state, config)
 
       # TODO: Refactor the following code to use gems like git/grit/rugged and
@@ -20,7 +26,7 @@ module DiceBag
       # dependencies freely. ~asmith
 
       body = %Q({
-        "state": "#{state}",
+        "state": "#{state.to_s}",
         "target_url": "#{config.build_url}",
         "description": "Continuous integration run #{config.build_number}"
       })

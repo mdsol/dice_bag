@@ -45,13 +45,13 @@ namespace :ci do
     config = DiceBag::Configuration.new
 
     task :pending do
-      DiceBag::GitHub.update_commit_status('pending', config)
+      DiceBag::GitHub.update_commit_status(:pending, config)
     end
     task :success do
-      DiceBag::GitHub.update_commit_status('success', config)
+      DiceBag::GitHub.update_commit_status(:success, config)
     end
     task :failure do
-      DiceBag::GitHub.update_commit_status('failure', config)
+      DiceBag::GitHub.update_commit_status(:failure, config)
     end
   end
 end
