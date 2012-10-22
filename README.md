@@ -26,11 +26,6 @@ Run the following command to see the new tasks:
 [bundle exec] rake -D config
 ```
 
-## TODO
-
-* Describe the template-and-environment-driven processing here.
-* Add `config:generate:rails:db` or similar to spew out standard templates.
-
 ## Owners
 
 * [Andrew Smith](mailto:asmith@mdsol.com)
