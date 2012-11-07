@@ -1,4 +1,5 @@
 require 'dice_bag/template_helpers'
+require 'dice_bag/available_templates'
 
 module DiceBag
 
@@ -44,7 +45,7 @@ module DiceBag
     end
 
     def self.write_all
-      template_names = File.join(Rails.root, "config/**/*.erb")
+      template_names = File.join(DiceBag::configuration_dir, "**/*.erb")
       Dir[template_names].each do |template|
         file_name = template.split("config/").last.gsub('.erb', '')
         self.write(file_name)
@@ -52,10 +53,13 @@ module DiceBag
     end
 
     def self.write(template_name)
-      template_filename = File.join(Rails.root, "config/#{template_name}.erb")
-      config_filename = File.join(Rails.root, "config/#{template_name}")
+      
+      template_filename = File.join(DiceBag::configuration_dir, "#{template_name}.erb")
+      config_filename = File.join(DiceBag::configuration_dir, template_name)
 
-      return unless File.exists?(template_filename)
+      unless File.exists?(template_filename)
+        raise "template file #{template_name}.erb not found. Configuration file not created"
+      end
 
       # By passing "<>" we're trimming trailing newlines on lines that are
       # nothing but ERB blocks (see documentation). This is useful for files
@@ -65,5 +69,40 @@ module DiceBag
       configured = Configuration.new
       File.open(config_filename, 'w') {|file| file.puts(template.result(binding)) }
     end
+
+    def self.generate_all_templates
+      AvailableTemplates.all.each do |template|
+        self.generate_template(template)
+      end
+    end
+
+    def self.generate_template(file)
+      unless File.exists?(file)
+        raise "template file #{file} not found, template not generated"
+      end
+
+      filename = File.basename(file)
+      new_config_file = File.join(DiceBag::configuration_dir, filename)
+      unless File.exists?(new_config_file)
+        DiceBag::copy_file(file, new_config_file)
+        puts "new template file generated in config/#{filename}. execute 'rake config:all' to get your configuration file."
+      end
+    end
+
+  end
+
+  def self.copy_file(src, dst)
+    #TODO: how to do this in no-rails environments?
+    project_name = Rails.application.class.parent_name.downcase
+    File.open(dst,"w") do |output|
+      output.puts File.readlines(src).join.gsub("PROJECT_NAME", project_name)
+    end
+  end
+
+  #TODO: Find a better home for this method
+  def self.configuration_dir
+    #TODO: properly find the root of the project in non rails projects.
+    root = defined?(Rails) ? Rails.root : Dir.pwd 
+    File.join(root, "config")
   end
 end

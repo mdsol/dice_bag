@@ -1,0 +1,12 @@
+<%
+# TODO: Replace the settings below with values from the environment, as per the
+# 'mauth.yml.erb' template. Not doing this now as it's not required for running
+# tests locally or in the CI environment; would be required for use in
+# production deployment. ~asmith
+%>
+development: &default
+  access_key_id: XXXXXXXXXXXXXXXXXXXX
+  secret_access_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+test:
+  <<: *default
