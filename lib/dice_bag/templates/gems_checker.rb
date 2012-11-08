@@ -18,6 +18,10 @@ module DiceBag
     if configured.google_analytics_id
       needed_templates.push('google_analytics.yml.erb')
     end
+    
+    if defined?(NewRelic)
+      needed_templates.push('newrelic.yml.erb')
+    end
 
     needed_templates
   end
