@@ -1,6 +1,6 @@
 <% [:development, :test, :production].each do |env| %>
 <%= env %>:
-  adapter: mysql2
+  adapter: <%= configured[env].database_driver || 'mysql2' %>
   database: <%= configured[env].database_name || "PROJECT_NAME_#{env}" %>
   username: <%= configured[env].database_username || 'root' %>
   password: <%= configured[env].database_password %>
