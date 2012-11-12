@@ -95,8 +95,14 @@ module DiceBag
   #utility methods used by the methods above, surely need to be moved somewhere else.
   
   def self.copy_file(src, dst)
-    #TODO: how to do this in no-rails environments?
-    project_name = Rails.application.class.parent_name.downcase
+    if defined?(Rails)
+      project_name = Rails.application.class.parent_name.downcase
+    else
+    #TODO: how to do find the name of the project in no-rails environments?
+      project_name = 'project'
+    end
+    # Some templates need the name of the project. We put a placeholder
+    # PROJECT_NAME there, it gets substituted by the real name of the project here
     File.open(dst,"w") do |output|
       output.puts File.readlines(src).join.gsub("PROJECT_NAME", project_name)
     end
