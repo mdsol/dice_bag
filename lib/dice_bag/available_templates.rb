@@ -1,30 +1,25 @@
 # This class returns all the templates we can generate in this particular project
-# It can read directories with templates.
-# These directories are self-contained, they contain both the templates and the 
-# code that decide if the templates should be generated for this project
 module DiceBag
+ 
   class AvailableTemplates
-    @@available = []
 
     def self.all
-      self.read_dir(File.join(File.dirname(__FILE__), "templates/"))
-      @@available
-    end
+      #all the classes than inherit from us in the ruby runtime
+      template_checkers = ObjectSpace.each_object(Class).select { |klass| klass < self }
+      available_templates = []
 
-    def self.add(filename)
-      @@available.push(filename) 
-      @@available.flatten.uniq
-    end
-
-    def self.read_dir(dirname)
-      gem_file = File.join(dirname, 'gems_checker.rb')
-      require gem_file
-      DiceBag::needed_templates.each do |template|
-        filename = File.join(dirname, template)
-        self.add( filename )
+      template_checkers.each do |checker|
+        checker.new.templates.each do |template|
+          available_templates.push( template)
+        end
       end
+      available_templates
     end
 
   end
 end
 
+# we require the our own templates checker here, for other gems we just need 
+# them to inherit from DiceBag::AvailableTemplates and require the file 
+# If Ruby loads the file we can find the class in the object space and call it
+require_relative 'templates/gems_checker'
