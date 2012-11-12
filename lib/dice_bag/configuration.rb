@@ -66,6 +66,7 @@ module DiceBag
       # like mauth_key where we want to control newlines carefully.
       template = ERB.new(File.read(template_filename), nil, "<>")
 
+      #templates expect a configured object
       configured = Configuration.new
       File.open(config_filename, 'w') {|file| file.puts(template.result(binding)) }
     end
@@ -95,16 +96,10 @@ module DiceBag
   #utility methods used by the methods above, surely need to be moved somewhere else.
   
   def self.copy_file(src, dst)
-    if defined?(Rails)
-      project_name = Rails.application.class.parent_name.downcase
-    else
-    #TODO: how to do find the name of the project in no-rails environments?
-      project_name = 'project'
-    end
     # Some templates need the name of the project. We put a placeholder
     # PROJECT_NAME there, it gets substituted by the real name of the project here
     File.open(dst,"w") do |output|
-      output.puts File.readlines(src).join.gsub("PROJECT_NAME", project_name)
+      output.puts File.readlines(src).join.gsub("PROJECT_NAME", self.project_name)
     end
   end
 
@@ -114,4 +109,14 @@ module DiceBag
     # We may want to make this more general in the future
     File.join(Dir.pwd, "config")
   end
+
+  def self.project_name
+    if defined?(Rails)
+      project_name = Rails.application.class.parent_name.downcase
+    else
+    #TODO: how to do find the name of the project in no-rails environments?
+      project_name = 'project'
+    end
+  end
+
 end

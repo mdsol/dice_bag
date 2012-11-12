@@ -1,6 +1,6 @@
 common: &default_settings
   license_key: <%= configured.newrelic_key || "12345" %>
-  app_name: <%= configured.domain || PROJECT_NAME %>
+  app_name: <%= configured.domain || 'PROJECT_NAME' %>
   enabled: <%= configured.enable_newrelic || false %>
   log_level: <%= configured.new_relic_debug == 'true' ? 'debug' : 'info' %>
   ssl: false
