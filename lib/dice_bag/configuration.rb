@@ -91,6 +91,9 @@ module DiceBag
 
   end
 
+
+  #utility methods used by the methods above, surely need to be moved somewhere else.
+  
   def self.copy_file(src, dst)
     #TODO: how to do this in no-rails environments?
     project_name = Rails.application.class.parent_name.downcase

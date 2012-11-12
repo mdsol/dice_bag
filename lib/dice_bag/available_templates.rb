@@ -1,4 +1,7 @@
-
+# This class returns all the templates we can generate in this particular project
+# It can read directories with templates.
+# These directories are self-contained, they contain both the templates and the 
+# code that decide if the templates should be generated for this project
 module DiceBag
   class AvailableTemplates
     @@available = []

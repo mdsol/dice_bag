@@ -1,3 +1,7 @@
+# This module has the logic that decides what templates will be
+# generated for this project.
+# this file lives in the same directory than all the templates it
+# provides logic for.
 module DiceBag
   def self.needed_templates
     needed_templates = []
