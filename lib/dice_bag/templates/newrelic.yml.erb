@@ -17,6 +17,6 @@ common: &default_settings
     ignore_errors: ActionController::RoutingError
   background:
     monitor_mode: true
-    app_name: <%= configured.domain || PROJECT_NAME %>
+    app_name: <%= configured.domain || 'PROJECT_NAME' %>
 <%= configured.rails_env %>
   <<: *default_settings
