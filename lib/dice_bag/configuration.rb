@@ -104,8 +104,8 @@ module DiceBag
 
   #TODO: Find a better home for this method
   def self.configuration_dir
-    #TODO: properly find the root of the project in non rails projects.
-    root = defined?(Rails) ? Rails.root : Dir.pwd 
-    File.join(root, "config")
+    # Dir.pwd is the directory that contains the Rakefile. 
+    # We may want to make this more general in the future
+    File.join(Dir.pwd, "config")
   end
 end
