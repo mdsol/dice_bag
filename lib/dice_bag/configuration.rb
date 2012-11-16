@@ -111,12 +111,8 @@ module DiceBag
   end
 
   def self.project_name
-    if defined?(Rails)
-      project_name = Rails.application.class.parent_name.downcase
-    else
     #TODO: how to do find the name of the project in no-rails environments?
-      project_name = 'project'
-    end
+    defined?(Rails) ? Rails.application.class.parent_name.downcase : 'project'
   end
 
 end
