@@ -5,8 +5,8 @@
 # production deployment. ~asmith
 %>
 development: &default
-  access_key_id: <%= configured.aws_access_key_id || '' %>
-  secret_access_key: <%= configured.aws_secret_access_key || '' %>
+  access_key_id: <%= configured.aws_access_key_id  %>
+  secret_access_key: <%= configured.aws_secret_access_key  %>
 
 test:
   <<: *default
