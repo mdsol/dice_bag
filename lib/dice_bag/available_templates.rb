@@ -3,21 +3,33 @@ module DiceBag
  
   class AvailableTemplates
 
-    def self.all
-      #all the classes than inherit from us in the ruby runtime
-      template_checkers = ObjectSpace.each_object(Class).select { |klass| klass < self }
-      available_templates = []
+    class << self
 
-      template_checkers.each do |checker|
-        checker.new.templates.each do |template|
-          available_templates.push( template)
-        end
+      def template_checkers
+        @template_checkers ||= []
       end
-      available_templates
+
+      def inherited(base)
+        template_checkers << base
+      end
+
+      def all
+        #all the classes than inherit from us in the ruby runtime
+        available_templates = []
+
+        template_checkers.each do |checker|
+          checker.new.templates.each do |template|
+            available_templates.push( template)
+          end
+        end
+        available_templates
+      end
     end
 
   end
+
 end
+
 
 # we require the our own templates checker here, for other gems we just need 
 # them to inherit from DiceBag::AvailableTemplates and require the file 
