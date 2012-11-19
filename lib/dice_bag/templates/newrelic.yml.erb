@@ -1,0 +1,22 @@
+common: &default_settings
+  license_key: <%= configured.newrelic_key || "12345" %>
+  app_name: <%= configured.domain || 'PROJECT_NAME' %>
+  enabled: <%= configured.enable_newrelic || false %>
+  log_level: <%= configured.new_relic_debug == 'true' ? 'debug' : 'info' %>
+  ssl: false
+  apdex_t: 0.5
+  capture_params: false
+  transaction_tracer:
+    enabled: true
+    transaction_threshold: apdex_f
+    record_sql: obfuscated
+    stack_trace_threshold: <%= configured.new_relic_debug == 'true' ? '0.1' : '0.5' %>
+  error_collector:
+    enabled: true
+    capture_source: true
+    ignore_errors: ActionController::RoutingError
+  background:
+    monitor_mode: true
+    app_name: <%= configured.domain || 'PROJECT_NAME' %>
+<%= configured.rails_env %>
+  <<: *default_settings
