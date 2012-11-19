@@ -26,6 +26,11 @@ Run the following command to see the new tasks:
 [bundle exec] rake -D config
 ```
 
+## Define your own templates
+
+Read the [templates] file to know how to include your own template files
+in the generation mechanism of dice_bag
+
 ## Owners
 
 * [Andrew Smith](mailto:asmith@mdsol.com)

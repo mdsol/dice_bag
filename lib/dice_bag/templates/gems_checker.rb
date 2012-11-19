@@ -26,7 +26,7 @@ module DiceBag
       if configured.google_analytics_id
         add_template('google_analytics.yml.erb')
       end
-      
+
       if defined?(NewRelic)
         add_template('newrelic.yml.erb')
       end
@@ -40,5 +40,5 @@ module DiceBag
     end 
 
   end
-  
+
 end
