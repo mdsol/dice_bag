@@ -35,4 +35,3 @@ in the generation mechanism of dice_bag
 
 * [Andrew Smith](mailto:asmith@mdsol.com)
 * [Jordi Polo](mailto:jcarres@mdsol.com)
-
