@@ -7,6 +7,7 @@
   host: <%= configured[env].database_host || 'localhost' %>
   pool: 5
   timeout: 5000
+  encoding: utf8
   <% db_cert = configured[env].database_ssl_cert %>
   <%= db_cert ? "sslca: #{db_cert}" : '' %>
 <% end %>
