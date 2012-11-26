@@ -13,10 +13,10 @@ module DiceBag
     # templates.
     include DiceBag::TemplateHelpers
 
-    attr_reader :force
+    attr_accessor :force
 
-    def initialize(force = false)
-      @force = force
+    def initialize
+      @force = false
     end
 
     def write_all

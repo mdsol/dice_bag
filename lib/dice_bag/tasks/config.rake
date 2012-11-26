@@ -31,7 +31,8 @@ namespace :config do
 
   desc "Ovewrites both your templates and configuration files with the defaults of dice bag."
   task :overwrite do
-    executor = DiceBag::Command.new(true)
+    executor = DiceBag::Command.new
+    executor.force = true
     executor.generate_all_templates
     executor.write_all
   end
