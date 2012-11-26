@@ -45,7 +45,7 @@ module DiceBag
       configured = Configuration.new
       contents = template.result(binding)
 
-      if should_overwrite?(new_config_filename, contents) 
+      if should_write?(new_config_filename, contents) 
         File.open(new_config_filename, 'w') {|file| file.puts(contents) }
         puts "file config/#{template_name} created"
       end
@@ -65,7 +65,7 @@ module DiceBag
       new_template_filename = file_in_config_dir(file)
       contents = read_template(file)
       
-      if should_overwrite?(new_template_filename, contents)
+      if should_write?(new_template_filename, contents)
         File.open(new_template_filename, 'w') {|file| file.puts(contents) }
         puts "new template file generated in config/#{file}. execute 'rake config:all' to get the corresponding configuration file."
       end
@@ -74,7 +74,7 @@ module DiceBag
 
     private
 
-    def should_overwrite?(file, new_contents)
+    def should_write?(file, new_contents)
       #we always overwrite if we pass force as param, are inside an script or we are not development
       return true if force || !$stdin.tty? || ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'production'
       return true if !File.exists?(file)
