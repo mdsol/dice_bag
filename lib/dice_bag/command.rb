@@ -64,7 +64,7 @@ module DiceBag
 
       new_template_filename = file_in_config_dir(file)
       contents = read_template(file)
-      
+
       if should_write?(new_template_filename, contents)
         File.open(new_template_filename, 'w') {|file| file.puts(contents) }
         puts "new template file generated in config/#{file}. execute 'rake config:all' to get the corresponding configuration file."
@@ -80,22 +80,22 @@ module DiceBag
       return true if !File.exists?(file)
       return false if diff(file, new_contents).empty?
 
-       while true
-         puts "Overwrite? #{file}, [Y]es, [N]o, [A]ll files, [Q]uit, [D]show diff"
-         answer = $stdin.gets.tap{|text| text.strip!.downcase! if text}
-         case answer
-         when 'y'
-           return true
-         when 'n'
-           return false
-         when 'a'
-           return @force = true
-         when 'q'
-           exit
-         when 'd'
-           puts diff(file, new_contents)
-         end
-       end
+      while true
+        puts "Overwrite? #{file}, [Y]es, [N]o, [A]ll files, [Q]uit, [D]show diff"
+        answer = $stdin.gets.tap{|text| text.strip!.downcase! if text}
+        case answer
+        when 'y'
+          return true
+        when 'n'
+          return false
+        when 'a'
+          return @force = true
+        when 'q'
+          exit
+        when 'd'
+          puts diff(file, new_contents)
+        end
+      end
     end
 
     def read_template(template)
@@ -108,7 +108,7 @@ module DiceBag
       #TODO: how to do find the name of the project in no-rails environments?
       defined?(Rails) ? Rails.application.class.parent_name.downcase : 'project'
     end
-    
+
     def file_in_config_dir(filename)
       filename = File.basename(filename)
       # Dir.pwd is the directory that contains the Rakefile. 
@@ -117,12 +117,12 @@ module DiceBag
     end
 
     def diff(destination, content)
-       diff_cmd = ENV['RAILS_DIFF'] || 'diff -u'
-       Tempfile.open(File.basename(destination), File.dirname(destination)) do |temp|
-         temp.write content
-         temp.rewind
-         `#{diff_cmd} #{destination} #{temp.path}`.strip
-       end
+      diff_cmd = ENV['RAILS_DIFF'] || 'diff -u'
+      Tempfile.open(File.basename(destination), File.dirname(destination)) do |temp|
+        temp.write content
+        temp.rewind
+        `#{diff_cmd} #{destination} #{temp.path}`.strip
+      end
     end
 
   end
