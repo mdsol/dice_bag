@@ -5,8 +5,8 @@
   username: <%= configured[env].database_username || 'root' %>
   password: <%= configured[env].database_password %>
   host: <%= configured[env].database_host || 'localhost' %>
-  <% db_cert = configured[env].database_ssl_cert %>
-  <%= db_cert ? "sslca: #{db_cert}" : '' %>
   pool: 5
   timeout: 5000
+  <% db_cert = configured[env].database_ssl_cert %>
+  <%= db_cert ? "sslca: #{db_cert}" : '' %>
 <% end %>
