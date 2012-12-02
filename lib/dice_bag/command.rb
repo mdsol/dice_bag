@@ -22,8 +22,7 @@ module DiceBag
 
     def write_all
       templates_to_generate.each do |template|
-        file_name = File.basename(template)
-        write(file_name)
+        write(template)
       end
     end
 
@@ -78,7 +77,7 @@ module DiceBag
     private
     def create_new_file(filename, contents)
       File.open(filename, 'w') do |file| 
-        file.puts(file_announcement) 
+        file.puts(file_announcement) unless contents.include?("dice_bag")
         file.puts(contents)
       end 
     end
@@ -88,7 +87,8 @@ module DiceBag
       generated_templates = Dir[file_in_config_dir("**/*.erb")]
       custom_templates = Dir[file_in_config_dir("**/*.erb.local")]
       all_files = generated_templates + custom_templates
-      all_files.delete_if {|file| custom_templates.include?(File.basename(file) + '.local') }
+      templates = all_files.delete_if {|file| custom_templates.include?(File.basename(file) + '.local') }
+      templates.map{|t| File.basename(t)}
     end
 
     def should_write?(file, new_contents)
