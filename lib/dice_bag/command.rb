@@ -20,20 +20,21 @@ module DiceBag
     end
 
     def write_all
-      template_names = file_in_config_dir("**/*.erb")
-      Dir[template_names].each do |template|
-        file_name = template.split("config/").last.gsub('.erb', '')
+      templates_to_generate.each do |template|
+        file_name = File.basename(template)
         write(file_name)
       end
     end
 
     def write(template_name)
 
-      template_filename = file_in_config_dir("#{template_name}.erb")
-      new_config_filename = file_in_config_dir(template_name)
+      config_name = template_name.gsub('.local', '').gsub('.erb', '')
+
+      template_filename = file_in_config_dir(template_name)
+      new_config_filename = file_in_config_dir(config_name)
 
       unless File.exists?(template_filename)
-        raise "template file #{template_name}.erb not found. Configuration file not created"
+        raise "template file #{template_name} not found. Configuration file not created"
       end
 
       # By passing "<>" we're trimming trailing newlines on lines that are
@@ -43,12 +44,11 @@ module DiceBag
 
       #templates expect a configured object
       configured = Configuration.new
-      contents = template.result(binding)
 
-      if should_write?(new_config_filename, contents) 
-        File.open(new_config_filename, 'w') {|file| file.puts(contents) }
-        puts "file config/#{template_name} created"
-      end
+      contents = template.result(binding)
+      File.open(new_config_filename, 'w') {|file| file.puts(contents) }
+      puts "file config/#{config_name} created"
+
     end
 
     def generate_all_templates
@@ -62,17 +62,26 @@ module DiceBag
         raise "template file #{file} not found, template not generated"
       end
 
-      new_template_filename = file_in_config_dir(file)
+      config_filename = File.basename(file)
+      new_template_filename = file_in_config_dir(config_filename)
+
       contents = read_template(file)
 
-      if should_write?(new_template_filename, contents)
-        File.open(new_template_filename, 'w') {|file| file.puts(contents) }
-        puts "new template file generated in config/#{file}. execute 'rake config:all' to get the corresponding configuration file."
-      end
+   #   if should_write?(new_template_filename, contents)
+      File.open(new_template_filename, 'w') {|template| template.puts(contents) }
+      puts "new template file generated in config/#{config_filename}. execute 'rake config:all' to get the corresponding configuration file."
+   #   end
     end
 
 
     private
+    #local templates always takes preference over generated templates
+    def templates_to_generate
+      generated_templates = Dir[file_in_config_dir("**/*.erb")]
+      custom_templates = Dir[file_in_config_dir("**/*.erb.local")]
+      all_files = generated_templates + custom_templates
+      all_files.delete_if {|file| custom_templates.include?(File.basename(file) + '.local') }
+    end
 
     def should_write?(file, new_contents)
       #we always overwrite if we pass force as param, are inside an script or we are not development
@@ -81,7 +90,7 @@ module DiceBag
       return false if diff(file, new_contents).empty?
 
       while true
-        puts "Overwrite? #{file}, [Y]es, [N]o, [A]ll files, [Q]uit, [D]show diff"
+        puts "Overwrite? Recommended: Yes.  #{file}, [Y]es, [n]o, [a]ll files, [q]uit, [d]show diff"
         answer = $stdin.gets.tap{|text| text.strip!.downcase! if text}
         case answer
         when 'y'
@@ -94,6 +103,8 @@ module DiceBag
           exit
         when 'd'
           puts diff(file, new_contents)
+        else
+          return true
         end
       end
     end
