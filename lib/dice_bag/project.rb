@@ -3,9 +3,10 @@ module DiceBag
 
   class Project
 
+    DEFAULT_NAME = 'project'
     def self.name
       #TODO: how to do find the name of the project in no-rails environments?
-      defined?(Rails) ? Rails.application.class.parent_name.downcase : 'project'
+      defined?(Rails) ? Rails.application.class.parent_name.downcase : DEFAULT_NAME
     end
 
     def self.file_in_config_dir(filename)
