@@ -28,12 +28,4 @@ namespace :config do
     raise "A filename needs to be provided" if filename.nil?
     DiceBag::Command.new.generate_template(filename)
   end
-
-  desc "Ovewrites both your templates and configuration files with the defaults of dice bag."
-  task :overwrite do
-    executor = DiceBag::Command.new
-    executor.force = true
-    executor.generate_all_templates
-    executor.write_all
-  end
 end

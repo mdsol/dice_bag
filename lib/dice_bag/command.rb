@@ -10,13 +10,6 @@ module DiceBag
   #is called and dice_bag can find what software is used in this project
   class Command
 
-
-    attr_accessor :force
-
-    def initialize
-      @force = false
-    end
-
     def write_all
       Project.templates_to_generate.each do |template|
         write(template)

@@ -28,8 +28,8 @@ module DiceBag
     end
 
     def should_write?(file, new_contents)
-      #we always overwrite if we pass force as param, are inside an script or we are not development
-      return true if force || !$stdin.tty? || ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'production'
+      #we always overwrite if we are inside an script or we are not development
+      return true if @force || !$stdin.tty? || ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'production'
       return true if !File.exists?(file)
       return false if diff(file, new_contents).empty?
 
