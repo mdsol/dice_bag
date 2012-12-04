@@ -8,6 +8,7 @@ module DiceBag
 
   class DefaultTemplateFile
     include DiceBagFile
+
     def initialize(name)
       @filename = File.basename(name)
       @file = name
@@ -19,6 +20,7 @@ module DiceBag
       template_file.write(contents)
       #end
     end
+
     def read_template(template)
       # Some templates need the name of the project. We put a placeholder
       # PROJECT_NAME there, it gets substituted by the real name of the project here

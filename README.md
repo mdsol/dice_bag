@@ -33,6 +33,7 @@ config:all will generate configuration files from the templates you have
 in your config/ directory. 
 config:generate_all will create predefined templates in your config/
 directory. 
+In addition 'rake:config' will call these two tasks in one command.
 
 We recommend you to add to your .gitignore the generated configuration files
 but to commit to your repository your template files. Doing this, you can
