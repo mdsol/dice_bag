@@ -18,5 +18,18 @@ common: &default_settings
   background:
     monitor_mode: true
     app_name: <%= configured.domain || 'PROJECT_NAME' %>
-<%= configured.rails_env %>
+
+development:
   <<: *default_settings
+  enabled: false
+  developer: true
+
+test:
+  <<: *default_settings
+  enabled: false
+  developer: false
+
+production:
+  <<: *default_settings
+  enabled: true
+  developer: false
