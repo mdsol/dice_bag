@@ -28,7 +28,7 @@ module DiceBag
       configured = Configuration.new
       contents = template.result(binding)
 
-      return unless Project.should_write?(config_file.file, contents)
+      return unless config_file.should_write?(contents)
       config_file.write(contents)
       puts "file config/#{config_file.filename} created"
     end
