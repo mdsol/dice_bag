@@ -26,9 +26,12 @@ module DiceBag
 
       #templates expect a configured object
       configured = Configuration.new
-
       contents = template.result(binding)
+
+      return unless Project.should_write?(config_file.file, contents)
       config_file.write(contents)
+      puts "file config/#{config_file.filename} created"
     end
+
   end
 end

@@ -8,7 +8,7 @@ module DiceBag
     include DiceBagFile
     def initialize(name)
       @filename = name.gsub('.local', '').gsub('.erb', '')
-      @file = Project.file_in_config_dir(name)
+      @file = Project.file_in_config_dir(@filename)
     end
   end
 end

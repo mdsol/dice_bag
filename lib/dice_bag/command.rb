@@ -22,7 +22,6 @@ module DiceBag
       config_file = ConfigFile.new(template_name)
 
       template_file.create_file(config_file)
-      puts "file config/#{config_file.filename} created"
     end
 
 
@@ -38,8 +37,6 @@ module DiceBag
       project_template = TemplateFile.new(File.basename(file))
 
       default_template.create_file(project_template)
-      puts "new template file generated in config/#{project_template.filename}. 
-            execute 'rake config:all' to get the corresponding configuration file."
     end
 
   end
