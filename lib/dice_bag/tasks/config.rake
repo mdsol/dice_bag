@@ -1,8 +1,8 @@
 require 'erb'
 require 'dice_bag/command'
 
-desc "Configure the application from the environment. It creates template files if you need and their config files"
-task :config => ['config:generate_all', 'config:all']
+desc "Configure the application from the environment. It creates template files, config files and the database"
+task :config => ['config:generate_all', 'config:all', 'config:db']
 
 namespace :config do
   desc "Create all the files from their templates in config/"
@@ -28,4 +28,15 @@ namespace :config do
     raise "A filename needs to be provided" if filename.nil?
     DiceBag::Command.new.generate_template(filename)
   end
+
+  desc "creates and setups the database of the project"
+  task :db do
+    db_tasks = ["db:create", "db:migrate"]
+    all_tasks = Rake::Task.tasks.map(&:name)
+    return unless (all_tasks & db_tasks) == db_tasks
+    db_tasks.each do |task|
+      Rake::Task[task].invoke
+    end
+  end
+
 end
