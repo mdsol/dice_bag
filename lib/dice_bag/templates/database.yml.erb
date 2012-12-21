@@ -1,7 +1,7 @@
 <% [:development, :test, :production].each do |env| %>
 <%= env %>:
   adapter: <%= configured[env].database_driver || 'mysql2' %>
-  database: <%= configured[env].database_name || "PROJECT_NAME_#{env}" %>
+  database: <%= configured[env].database_name || "PROJECT_NAME_#{env}" %><%= ('<'+'%=ENV["TEST_ENV_NUMBER"] %'+'>') if (env == :test) %>
   username: <%= configured[env].database_username || 'root' %>
   password: <%= configured[env].database_password %>
   host: <%= configured[env].database_host || 'localhost' %>
