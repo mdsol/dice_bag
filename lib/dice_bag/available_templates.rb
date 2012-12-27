@@ -24,6 +24,14 @@ module DiceBag
         end
         available_templates
       end
+
+      def template_filename_for(filename)
+        self.all.each do |template_filename|
+          if template_filename.include? filename
+            return template_filename
+          end
+        end
+      end
     end
 
   end
