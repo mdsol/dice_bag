@@ -10,6 +10,10 @@ module DiceBag
     include DiceBagFile
 
     def initialize(name)
+      #if called from command line with only a name we search in all our templates for the file
+      if (File.dirname(name) == '.')
+        name = AvailableTemplates.template_filename_for(name)
+      end
       @filename = File.basename(name)
       @file = name
     end
