@@ -14,8 +14,8 @@ module DiceBag
     include DiceBag::TemplateHelpers
 
     def initialize(name)
-      @filename = name
-      @file = Project.file_in_config_dir(name)
+      @filename = File.basename(name)
+      @file = name
     end
 
     def create_file(config_file)
@@ -30,7 +30,7 @@ module DiceBag
 
       return unless config_file.should_write?(contents)
       config_file.write(contents)
-      puts "file config/#{config_file.filename} created"
+      puts "file #{config_file.file} created"
     end
 
   end
