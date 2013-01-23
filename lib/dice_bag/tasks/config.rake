@@ -29,3 +29,13 @@ namespace :config do
     DiceBag::Command.new.generate_template(filename)
   end
 end
+
+desc "Runs the server"
+task :run do
+  port = ENV['PORT'] || 3000
+  if defined?(Rails)
+    `bundle exec rails server -p #{port}`
+  elsif defined?(Sinatra)
+    `bundle exec rackup -p #{port}`
+  end
+end
