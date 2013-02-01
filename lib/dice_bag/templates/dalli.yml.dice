@@ -12,7 +12,7 @@ development: &default
   port: 11211
   value_max_bytes: 52428800
   compress: true
-  
+
 test:
   <<: *default
 
