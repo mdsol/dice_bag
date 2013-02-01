@@ -9,20 +9,19 @@ module DiceBag
       defined?(Rails) ? Rails.application.class.parent_name.downcase : DEFAULT_NAME
     end
 
-    def self.file_in_config_dir(filename)
-      filename = File.basename(filename)
-      # Dir.pwd is the directory that contains the Rakefile. 
-      # We may want to make this more general in the future
-      File.join(Dir.pwd, 'config', filename)
+    def self.config_files(filename)
+      File.join(Dir.pwd, filename)
     end
 
     #local templates always takes preference over generated templates
     def self.templates_to_generate
-      generated_templates = Dir[Project.file_in_config_dir("**/*.erb")]
-      custom_templates = Dir[Project.file_in_config_dir("**/*.erb.local")]
+      generated_templates = Dir[Project.config_files("**/config/*.erb")]
+      custom_templates = Dir[Project.config_files("**/config/*.erb.local")]
+      dotNetTemplates = Dir[Project.config_files("**/*.config.template")]
       all_files = generated_templates + custom_templates
-      templates = all_files.delete_if {|file| custom_templates.include?(File.basename(file) + '.local') }
-      templates.map{|t| File.basename(t)}
+      templates = all_files.delete_if {|file| custom_templates.include?(file + '.local')}
+      dotNetTemplates = dotNetTemplates.delete_if {|file| file.include?("/bin/")}
+      all_files + dotNetTemplates
     end
   end
 end

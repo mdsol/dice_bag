@@ -21,7 +21,7 @@ module DiceBag
     def create_file(template_file)
       contents = read_template(@file)
       template_file.write(contents)
-      puts "new template file generated in config/#{template_file.filename}. 
+      puts "new template file generated in #{template_file.file}.
             execute 'rake config:all' to get the corresponding configuration file."
     end
 
