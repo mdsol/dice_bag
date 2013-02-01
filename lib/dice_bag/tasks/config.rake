@@ -2,7 +2,7 @@ require 'erb'
 require 'dice_bag/command'
 
 desc "Configure the application from the environment. It creates template files if you need and their config files"
-task :config => ['config:generate_all', 'config:all']
+task :config => ['config:all']
 
 namespace :config do
   desc "Create all the files from their templates in config/"
