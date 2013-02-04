@@ -1,6 +1,7 @@
 require 'dice_bag/dice_bag_file.rb'
 require 'dice_bag/template_helpers'
 require 'dice_bag/configuration'
+require 'dice_bag/warning'
 
 #this class encapsulates the template files we will generate in the project 
 #using this gem
@@ -26,6 +27,7 @@ module DiceBag
 
       #templates expect a configured object
       configured = Configuration.new
+      warning = Warning.new(@filename)
       contents = template.result(binding)
 
       return unless config_file.should_write?(contents)

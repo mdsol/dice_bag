@@ -1,3 +1,5 @@
+<%= warning.as_yaml_comment %>
+
 <% [:development, :test, :production].each do |env| %>
 <%= env %>:
   adapter: <%= configured[env].database_driver || 'mysql2' %>
