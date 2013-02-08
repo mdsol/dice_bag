@@ -143,7 +143,10 @@ If you want DiceBag to generate your own pre-packaged templates when you run the
 rake `config:generate_all` task, you can create a plug-in. Read the
 `templates.md` file to learn how to do this.
 
-## Owners
+## Contributors
 
-* [Andrew Smith](mailto:asmith@mdsol.com)
-* [Jordi Carres](mailto:jcarres@mdsol.com)
+* [Andrew Smith](https://github.com/asmith-mdsol)
+* [Jordi Carres](https://github.com/jcarres-mdsol)
+* [Dan Hoizner](https://github.com/dhoizner-mdsol)
+* [Aaron Weiner](https://github.com/HonoreDB)
+
