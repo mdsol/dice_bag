@@ -16,7 +16,7 @@ module DiceBag
 
     def initialize(name)
       @filename = File.basename(name)
-      @file = name
+      @file = Project.config_files(name)
     end
 
     def create_file(config_file)

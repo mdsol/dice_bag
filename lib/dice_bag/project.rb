@@ -27,7 +27,7 @@ module DiceBag
       all_files = generated_templates + custom_templates
       cleaned_templates = all_files.delete_if {|file| custom_templates.include?(file + '.local')}
       dotNetTemplates = dotNetTemplates.delete_if {|file| file.include?("/bin/")}
-      cleaned_templates + dotNetTemplates
+      (cleaned_templates + dotNetTemplates).map { |template| File.basename(template) }
     end
 
   end
