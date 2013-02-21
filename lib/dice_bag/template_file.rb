@@ -16,7 +16,7 @@ module DiceBag
 
     def initialize(name)
       @filename = File.basename(name)
-      @file = name
+      @file = Project.config_files(name)
     end
 
     def create_file(config_file)
@@ -32,7 +32,7 @@ module DiceBag
 
       return unless config_file.should_write?(contents)
       config_file.write(contents)
-      puts "file #{config_file.file} created"
+      puts "file #{Project.config_dir}/#{config_file.file} created"
     end
 
   end
