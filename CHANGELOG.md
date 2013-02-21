@@ -1,3 +1,8 @@
+# 0.5
+
+* Generated templates should be commited to the git repo
+* New extension .dice for Dicebag's templates
+
 # 0.4.1
 
 * Bugfix: templates are generated in config/ for Rails projects

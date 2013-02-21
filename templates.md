@@ -20,8 +20,19 @@ class MyTemplates << Dicebag::AvailableTemplates
   def templates
     all_templates = []
     pwd = File.dirname(__FILE__)
-    all_templates.push(File.join(pwd, "my_template.yml.erb))
+    all_templates.push(File.join(pwd, "my_template.yml.dice))
     all_templates
   end
 end
 ```
+This class has to be load in memory when your rake task is executed.
+If you are adding a template to a gem called 'gem_name'. Make sure the file with this
+class is loaded from 'lib/gem_name.rb' in your Gem. When the Gem is
+required this file will be in memory and Dicebag will find it.
+
+The Template file you need to create will be rendered by ERB. This gives
+you flexibility to introduce logic in your template.
+
+You can use the 'configured' object to get the information from
+environment variables.
+Check the default templates from Dicebag for examples.
