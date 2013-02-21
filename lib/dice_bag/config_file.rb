@@ -10,7 +10,7 @@ module DiceBag
       # The 'local', 'erb', and 'template' file extension are deprecated and
       # will be removed some time prior to v1.
       @filename = name.gsub('.local', '').gsub('.erb', '').gsub('.template','').gsub('.dice', '')
-      @file = @filename
+      @file = Project.config_files(@filename)
     end
   end
 end
