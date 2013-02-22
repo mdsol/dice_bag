@@ -29,7 +29,12 @@ module DiceBag
       custom_templates = Dir[Project.config_files("**/*.erb.local")]
       dotNetTemplates = Dir[Project.config_files("**/*.config.template")]
 
-      all_files = generated_templates + custom_templates + dice_templates
+      legacy_files = generated_templates + custom_templates + dotNetTemplates
+      legacy_files.each do |file|
+        $stderr.puts "DEPRECATION WARNING: Use '.dice' file extension instead for '#{file}'"
+      end
+
+      all_files = legacy_files + dice_templates
 
       cleaned_templates = all_files.delete_if {|file| custom_templates.include?(file + '.local')}
       dotNetTemplates = dotNetTemplates.delete_if {|file| file.include?("/bin/")}
