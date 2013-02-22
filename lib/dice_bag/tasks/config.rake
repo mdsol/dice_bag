@@ -22,10 +22,11 @@ namespace :config do
     DiceBag::Command.new.generate_all_templates
   end
 
-  desc "Regenerate a given template"
-  task :generate, :filename do |t, args|
+  desc "Regenerate a given template, params: filename of the template, location for the generated file[optional]"
+  task :generate, :filename, :location do |t, args|
     filename = args[:filename]
+    location = args[:location]
     raise "A filename needs to be provided" if filename.nil?
-    DiceBag::Command.new.generate_template(filename)
+    DiceBag::Command.new.generate_template(DiceBag::DefaultTemplateFile.new(filename,location))
   end
 end

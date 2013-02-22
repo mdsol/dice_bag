@@ -10,13 +10,17 @@ module DiceBag
     end
 
     def self.config_files(filename)
-      File.join(self.config_dir, filename)
+      File.join(self.root, self.config_dir, filename)
     end
 
     # dotNet apps do not have the templates in config/ but in the root of the project
     # TODO: detect dotNet instead of detecting rails
     def self.config_dir
-      defined?(Rails) ? File.join(Dir.pwd, 'config') : Dir.pwd
+      defined?(Rails) ? 'config' : "."
+    end
+
+    def self.root
+      Dir.pwd
     end
 
     #local templates always takes preference over generated templates
