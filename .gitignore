@@ -1,0 +1,5 @@
+# Locally built gem files.
+*.gem
+
+# We're a library, so we avoid overly constraining clients.
+Gemfile.lock
