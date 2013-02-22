@@ -16,7 +16,7 @@ be the full path location of one template.
 Example:
 
 ```ruby
-class MyTemplates < Dicebag::AvailableTemplates
+class MyTemplates < DiceBag::AvailableTemplates
   def templates
     all_templates = []
     pwd = File.dirname(__FILE__)
