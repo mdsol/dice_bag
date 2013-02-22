@@ -21,10 +21,16 @@ module DiceBag
 
     #local templates always takes preference over generated templates
     def self.templates_to_generate
+      dice_templates = Dir["**/*.dice"]
+
+      # The following ways of identifying template files will be removed prior
+      # to v1.
       generated_templates = Dir[Project.config_files("**/*.erb")]
       custom_templates = Dir[Project.config_files("**/*.erb.local")]
       dotNetTemplates = Dir[Project.config_files("**/*.config.template")]
-      all_files = generated_templates + custom_templates
+
+      all_files = generated_templates + custom_templates + dice_templates
+
       cleaned_templates = all_files.delete_if {|file| custom_templates.include?(file + '.local')}
       dotNetTemplates = dotNetTemplates.delete_if {|file| file.include?("/bin/")}
       (cleaned_templates + dotNetTemplates).map { |template| File.basename(template) }
