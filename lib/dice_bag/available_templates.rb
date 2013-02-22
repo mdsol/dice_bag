@@ -28,9 +28,10 @@ module DiceBag
         #all the classes than inherit from us in the ruby runtime
         available_templates = []
 
-        template_checkers.each do |checker|
-          location = checker.new.templates_location
-          checker.new.templates.each do |template|
+        template_checkers.each do |template_checker|
+          checker = template_checker.new
+          location = checker.templates_location
+          checker.templates.each do |template|
             available_templates.push( DefaultTemplateFile.new(template, location) )
           end
         end
