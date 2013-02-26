@@ -9,19 +9,23 @@ module DiceBag
   class DefaultTemplateFile
     include DiceBagFile
 
-    def initialize(name)
+    def initialize(name, location=nil)
       #if called from command line with only a name we search in all our templates for the file
       if (File.dirname(name) == '.')
         name = AvailableTemplates.template_filename_for(name)
       end
       @filename = File.basename(name)
       @file = name
+      @template_location = location || Project.config_dir
     end
 
-    def create_file(template_file)
+    def create_file
       contents = read_template(@file)
-      template_file.write(contents)
-      puts "new template file generated in #{template_file.file}.
+      template_file = File.join(Project.root, @template_location, @filename)
+      File.open(template_file, 'w') do |file|
+        file.puts(contents)
+      end
+      puts "new template file generated in #{template_file}.
             execute 'rake config:all' to get the corresponding configuration file."
     end
 

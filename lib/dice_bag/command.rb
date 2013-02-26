@@ -31,12 +31,9 @@ module DiceBag
       end
     end
 
-    def generate_template(file)
-      default_template = DefaultTemplateFile.new(file)
+    def generate_template(default_template)
       default_template.assert_existence
-      project_template = TemplateFile.new(File.basename(file))
-
-      default_template.create_file(project_template)
+      default_template.create_file
     end
 
   end
