@@ -13,7 +13,9 @@ module DiceBag
 
     def initialize(name)
       @filename = File.basename(name)
-      @file = Project.config_files(name)
+      template_file = Dir["**/#{name}"].first
+      abort("template file not found: #{name}") unless template_file
+      @file = File.join(Dir.pwd,template_file)
     end
 
     def create_file(config_file, params)
@@ -30,7 +32,7 @@ module DiceBag
       return unless params[:deploy] || config_file.should_write?(contents)
 
       config_file.write(contents)
-      puts "File '#{config_file.file}' created"
+      puts "file #{config_file.file} created"
     end
   end
 end
