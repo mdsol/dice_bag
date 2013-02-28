@@ -1,3 +1,8 @@
+# 0.5.1
+
+* Config files are generated in the same directory where its templates
+  lives. Typically config/ but not necesarily
+
 # 0.5
 
 * Generated templates should be commited to the git repo
