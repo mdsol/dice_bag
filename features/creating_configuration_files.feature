@@ -54,3 +54,14 @@ Feature: Creating configuration files
         password: 
       """
 
+  Scenario Outline: Recursive descent of directories
+    Given an empty file named "<file>.dice"
+    When I run `rake config`
+    Then a file named "<file>" should exist
+
+    Examples:
+      | file                                |
+      | config.ru                           |
+      | config/database.yml                 |
+      | config/initializers/secret_token.rb |
+

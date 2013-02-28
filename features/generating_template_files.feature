@@ -5,17 +5,6 @@ Feature: Generating template files
       """
       require 'dice_bag/tasks'
 
-      # Simulate Rails being present. This should go away once processing of
-      # config directory is not dependent on Rails detection.
-      module Rails; end
-
-      # Need to stop other Rails-dependent functionality tanking.
-      class ::DiceBag::Project
-        def self.name
-          ''
-        end
-      end
-
       # Simulate Mysql2 being present. Should really just describe how to build
       # a template provider here instead.
       module Mysql2; end

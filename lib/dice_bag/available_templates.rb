@@ -11,7 +11,7 @@ module DiceBag
     # it needs to overwrite this method and return a string with the new location as relative
     # path inside the project.
     def templates_location
-      Project.config_dir
+      'config'
     end
 
     class << self
