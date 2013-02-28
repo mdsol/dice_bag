@@ -1,5 +1,7 @@
 # DiceBag
 
+[![Code Climate](https://codeclimate.com/github/mdsol/dice_bag.png)](https://codeclimate.com/github/mdsol/dice_bag)
+
 DiceBag is a library of rake tasks for configuring web apps in the style of [The
 Twelve-Factor App][1]. Configuration values are picked up from the environment
 and pushed into appropriate configuration files via templates. Pre-packaged
