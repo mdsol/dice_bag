@@ -5,8 +5,8 @@
 require 'dice_bag'
 
 module DiceBag
-  class CommonTemplatesBag < AvailableTemplates 
-    
+  class CommonTemplatesBag < AvailableTemplates
+
     def templates
       @needed_templates = []
       configured = Configuration.new
