@@ -19,7 +19,7 @@ module DiceBag
     def write(template_name)
       template_file = TemplateFile.new(template_name)
       template_file.assert_existence
-      config_file = ConfigFile.new(template_name)
+      config_file = ConfigFile.new(template_file)
 
       template_file.create_file(config_file)
     end
