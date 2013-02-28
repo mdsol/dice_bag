@@ -32,7 +32,7 @@ module DiceBag
 
       return unless config_file.should_write?(contents)
       config_file.write(contents)
-      puts "file #{Project.config_dir}/#{config_file.file} created"
+      puts "File '#{config_file.file}' created"
     end
 
   end
