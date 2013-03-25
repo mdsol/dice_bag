@@ -16,7 +16,7 @@ module DiceBag
       end
       @filename = File.basename(name)
       @file = name
-      @template_location = location || Project.config_dir
+      @template_location = location
     end
 
     def create_file

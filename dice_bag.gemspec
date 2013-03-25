@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.executables = Dir['bin/*'].map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
+  s.add_dependency 'rake'
   s.add_development_dependency 'aruba', '~> 0.5.1'
   s.add_development_dependency 'rspec', '~> 2.12'
 end
