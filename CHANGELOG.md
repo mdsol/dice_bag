@@ -1,4 +1,4 @@
-# On develop branch
+# 0.6.0
 
 * **Breaking change:** Only templates with the '.dice' extension are processed.
 * **Breaking change:** Local override via the '.local' extension has been removed.
