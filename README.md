@@ -122,4 +122,5 @@ rake `config:generate_all` task, you can create a plug-in. Read the
 * [Jordi Carres](https://github.com/jcarres-mdsol)
 * [Dan Hoizner](https://github.com/dhoizner-mdsol)
 * [Aaron Weiner](https://github.com/HonoreDB)
+* [Luke Greene](https://github.com/lgreene-mdsol)
 
