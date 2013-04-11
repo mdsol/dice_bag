@@ -2,6 +2,8 @@ module DiceBag
   class PrivateKey
 
     attr_accessor :private_key
+    @@header = "-----BEGIN RSA PRIVATE KEY-----"
+    @@footer = "-----END RSA PRIVATE KEY-----"
 
     def initialize(key)
       @private_key = key
@@ -20,18 +22,17 @@ module DiceBag
     end 
 
     def to_rsa_format!
-      parts = @private_key.split(/\s+/)
-    	header = []
-    	while parts.first !~ /-\Z/ && parts.any?
-      	header << parts.shift
-    	end
-    	header << parts.shift
-    	body = []
-    	while parts.first !~ /\A-/ && parts.any?
-      	body << parts.shift
-    	end
-    	footer = parts
-    	@private_key = [header.join(" "), body, footer.join(" ")].flatten.join("\n")
+      strip_down_key
+      body = @private_key.split(/\s+/)
+    	@private_key = [@@header, body, @@footer].flatten.join("\n")
+    end
+
+    private
+
+    def strip_down_key
+      @private_key.gsub!(@@header,"")
+      @private_key.gsub!(@@footer,"")
+      @private_key.strip!
     end
 
   end
