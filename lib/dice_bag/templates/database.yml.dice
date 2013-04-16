@@ -1,3 +1,5 @@
+<%= warning.as_yaml_comment %>
+
 <% [:development, :test, :production].each do |env| %>
 <%= env %>:
   adapter: <%= configured[env].database_driver || 'mysql2' %>
@@ -8,6 +10,7 @@
   pool: 5
   timeout: 5000
   encoding: utf8
+  reconnect: false
   <% db_cert = configured[env].database_ssl_cert %>
   <%= db_cert ? "sslca: #{db_cert}" : '' %>
 <% end %>

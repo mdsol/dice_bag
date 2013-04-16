@@ -1,15 +1,20 @@
-<%= "# This example file is intended to be used by a the developer who would like
+<%= warning.as_yaml_comment %>
+
+# This example file is intended to be used by a the developer who would like
 # use a locally running memcached.  By default, though, 
 # config/environments/development.rb sets the cache_store to memory
 # To enable this storage mechanism in development mode, consult the 
 # cache configuration code in config/environments/production.rb
-" %>
+
 development: &default
   namespace: PROJECT_NAME
   host: localhost
   port: 11211
   value_max_bytes: 52428800
   compress: true
-  
+
 test:
+  <<: *default
+
+production:
   <<: *default

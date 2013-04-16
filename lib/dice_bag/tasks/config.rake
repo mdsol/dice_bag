@@ -2,7 +2,7 @@ require 'erb'
 require 'dice_bag/command'
 
 desc "Configure the application from the environment. It creates template files if you need and their config files"
-task :config => ['config:generate_all', 'config:all']
+task :config => ['config:all']
 
 namespace :config do
   desc "Create all the files from their templates in config/"
@@ -22,10 +22,11 @@ namespace :config do
     DiceBag::Command.new.generate_all_templates
   end
 
-  desc "Regenerate a given template"
-  task :generate, :filename do |t, args|
+  desc "Regenerate a given template, params: filename of the template, location for the generated file[optional]"
+  task :generate, :filename, :location do |t, args|
     filename = args[:filename]
+    location = args[:location]
     raise "A filename needs to be provided" if filename.nil?
-    DiceBag::Command.new.generate_template(filename)
+    DiceBag::Command.new.generate_template(DiceBag::DefaultTemplateFile.new(filename,location))
   end
 end

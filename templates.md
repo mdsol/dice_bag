@@ -16,12 +16,38 @@ be the full path location of one template.
 Example:
 
 ```ruby
-class MyTemplates << Dicebag::AvailableTemplates
+class MyTemplates < DiceBag::AvailableTemplates
   def templates
     all_templates = []
     pwd = File.dirname(__FILE__)
-    all_templates.push(File.join(pwd, "my_template.yml.erb))
+    all_templates.push(File.join(pwd, "my_template.yml.dice))
     all_templates
   end
 end
 ```
+This class has to be load in memory when your rake task is executed.
+If you are adding a template to a gem called 'gem_name'. Make sure the file with this
+class is loaded from 'lib/gem_name.rb' in your Gem. When the Gem is
+required this file will be in memory and Dicebag will find it.
+
+The Template file you need to create will be rendered by ERB. This gives
+you flexibility to introduce logic in your template.
+
+You can use the 'configured' object to get the information from
+environment variables.
+Check the default templates from Dicebag for examples.
+
+If you want to change the place where Dicebag will write your template
+and the configuration file, you need to create another method which will
+return the path relative to the project root where you want them to be
+generated:
+
+```ruby
+class MyTemplates << Dicebag::AvailableTemplates
+  def templates_location
+    'config/initializers'
+  end
+end
+```
+The templates pointed by the templates method will be written in the
+location pointed by the templates_location method.
