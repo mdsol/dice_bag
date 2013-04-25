@@ -7,11 +7,7 @@ Feature: Providing values per environment
   prefixed value is accessed through the `[]` operator on `configured`.
 
   Scenario: Using the `[]` operator to access prefixed override values
-    Given a file named "Rakefile" with:
-      """
-      require 'dice_bag/tasks'
-      """
-    And a file named "database.yml.dice" with:
+    Given a file named "database.yml.dice" with:
       """
       <% [:development, :test, :production].each do |env| %>
       <%= env %>:

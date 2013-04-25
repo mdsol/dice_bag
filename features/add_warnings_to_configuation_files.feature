@@ -6,12 +6,6 @@ Feature: Add warnings to configuration files
   the template file will be confusing. So, we provide helpers like
   `warning.as_yaml_comment` for use in the templates.
 
-  Background:
-    Given a file named "Rakefile" with:
-      """
-      require 'dice_bag/tasks'
-      """
-
   Scenario: Add a warning in a YAML file
     Given a file named "database.yml.dice" with:
       """
