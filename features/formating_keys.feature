@@ -1,11 +1,5 @@
 Feature: Formatting a string key to RSA format
 
-  Background:
-    Given a file named "Rakefile" with:
-    """
-     require 'dice_bag/tasks'
-     """
-
   Scenario: Format RSA keys that include headers and footers
     Given a file named "private_key.dice" with:
       """

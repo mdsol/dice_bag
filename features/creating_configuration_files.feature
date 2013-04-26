@@ -14,12 +14,6 @@ Feature: Creating configuration files
   referenced environment variable is undefined `nil` is returned, allowing you
   to provide defaults directly in the template.
 
-  Background:
-    Given a file named "Rakefile" with:
-      """
-      require 'dice_bag/tasks'
-      """
-
   Scenario: Populating a YAML configuration file from an ERB template
     Given a file named "database.yml.dice" with:
       """
