@@ -2,7 +2,7 @@ Feature: Providing values per environment
 
   In applications frameworks like Rails it's usual to have configuration against
   multiple "environments". DiceBag allows you to use a prefixed environment
-  variable to override and existing environment variable, meaning you could
+  variable to override an existing environment variable, meaning you could
   specify different values per application environment as well as defaults. The
   prefixed value is accessed through the `[]` operator on `configured`.
 
