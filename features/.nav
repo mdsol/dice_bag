@@ -1,0 +1,8 @@
+- install.feature
+- creating_configuration_files.feature
+- create_a_single_configuration_file.feature
+- replacing_existing_configuration_files.feature
+- generating_template_files.feature
+- providing_values_per_environment.feature
+- add_warnings_to_configuration_files.feature
+- formating_keys.feature
