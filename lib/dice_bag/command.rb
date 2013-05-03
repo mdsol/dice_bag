@@ -10,18 +10,18 @@ module DiceBag
   #is called and dice_bag can find what software is used in this project
   class Command
 
-    def write_all
+    def write_all(params = {})
       Project.templates_to_generate.each do |template|
-        write(template)
+        write(template, params)
       end
     end
 
-    def write(template_name)
+    def write(template_name, params = {})
       template_file = TemplateFile.new(template_name)
       template_file.assert_existence
       config_file = ConfigFile.new(template_name)
 
-      template_file.create_file(config_file)
+      template_file.create_file(config_file, params)
     end
 
 
