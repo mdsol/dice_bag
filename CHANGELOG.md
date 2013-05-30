@@ -1,3 +1,12 @@
+# 0.7.1
+
+* The ensure_is_private_key method now additionally supports RSA keys without spaces.
+
+# 0.7.0
+
+* New ensure_is_private_key helper method to process RSA private keys.
+* New config:deploy rake task to use for deployments, which overwrites config files without prompting.
+
 # 0.6.0
 
 * **Breaking change:** Only templates with the '.dice' extension are processed.
