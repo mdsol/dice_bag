@@ -24,6 +24,7 @@ module DiceBag
     def to_rsa_format!
       strip_down_key
       body = @private_key.split(/\s+/)
+      body = body.first.scan(/.{1,64}/) if body.length == 1
     	@private_key = [@@header, body, @@footer].flatten.join("\n")
     end
 
