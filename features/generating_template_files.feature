@@ -1,9 +1,5 @@
 Feature: Generating template files
-
-  Background:
-    # That the directory needs to exist is a bug!
-    Given a directory named "config"
-
+  
   Scenario: Generate standard template files
     Given a file named "Rakefile" with:
       """

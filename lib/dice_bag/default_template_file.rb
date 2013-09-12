@@ -21,7 +21,9 @@ module DiceBag
 
     def create_file
       contents = read_template(@file)
-      template_file = File.join(Project.root, @template_location, @filename)
+      rooted_template_location = File.join(Project.root, @template_location)
+      Dir.mkdir(rooted_template_location) unless Dir.exist?(rooted_template_location)
+      template_file = File.join(rooted_template_location, @filename)
       File.open(template_file, 'w') do |file|
         file.puts(contents)
       end
