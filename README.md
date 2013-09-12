@@ -108,4 +108,5 @@ rake "config:generate_all" task, you can create a plug-in. Read the
 * [Aaron Weiner](https://github.com/HonoreDB)
 * [Luke Greene](https://github.com/lgreene-mdsol)
 * [Johnny Lo](https://github.com/jlo188)
+* [Connor Ross](https://github.com/cross311)
 
