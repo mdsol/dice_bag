@@ -1,6 +1,7 @@
 require 'dice_bag/dice_bag_file'
 require 'dice_bag/project'
 
+require 'fileutils'
 require 'tempfile'
 
 #This file encapsulate the template files Dicebag brings with itself
@@ -22,7 +23,7 @@ module DiceBag
     def create_file
       contents = read_template(@file)
       rooted_template_location = File.join(Project.root, @template_location)
-      Dir.mkdir(rooted_template_location) unless Dir.exist?(rooted_template_location)
+      FileUtils.mkdir_p(rooted_template_location)
       template_file = File.join(rooted_template_location, @filename)
       File.open(template_file, 'w') do |file|
         file.puts(contents)
