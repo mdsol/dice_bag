@@ -102,9 +102,15 @@ rake "config:generate_all" task, you can create a plug-in. Read the
 
 ## Troubleshooting
 
-### rake config fails in Rails project
+### rake config fails in Rails project with file not found
 
-Due to rake running ``` config/application.rb ``` before kicking off a task, configuration files should be loaded within ``` config/initializers/* ``` files instead of ``` config/application.rb ```.
+Due to rake running ``` config/application.rb ``` before kicking off a task, 
+if ``` config/application.rb ``` loads any configuration files that dice_bag
+ must generate a 'file not found' error may occur.  Makes sense that a file
+  ``` rake config:generate_all ``` needs to create, does not exist before it has ran.
+
+Given that the commands ``` rails server ``` or ``` rails console ``` etc. always run the
+ initializers, makes moving the config loading to ``` config/initializers/* ``` a safe bet.
 
 ## Contributors
 
