@@ -45,7 +45,7 @@ Feature: Replacing existing configuration files
       config: old value
       """
 
-  Scenario: Deny configuration file replacement with 'No' instead of 'n'
+  Scenario: Deny configuration file replacement with 'No' in addition to 'n'
     Given a file named "config.yml.dice" with:
       """
       config: <%= configured.value %>
