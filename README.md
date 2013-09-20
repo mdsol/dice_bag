@@ -4,8 +4,8 @@
 
 DiceBag is a library of rake tasks for configuring web apps in the style of [The
 Twelve-Factor App][1]. Configuration values are picked up from the environment
-and pushed into appropriate configuration files via templates. Pre-packaged
-templates for common configuration files are provided.
+and used to populate configuration files from templates. Pre-packaged templates
+for common configuration files are provided.
 
 [1]: http://www.12factor.net/
 
@@ -32,14 +32,12 @@ Run the following command to see the new tasks:
 
 ## Create configuration files from templates
 
-When the rake task `config` is run, configuration files are generated
-for any Dice bag template file you have in your configuration directory.
-Templates have a default .dice extension and in the future this will be
-the only supported extension.
-Configuration values from the environment are made
-available to the templates through the `configured` object.
+When the rake "config" task is run, configuration files are populated for all
+ERB template files in the project that have a ".dice" extension. Configuration
+values from the environment are made available to the templates through the
+`configured` object.
 
-For example, given the `config/database.yml.dice` file contains this template:
+For example, take a "database.yml.dice" file containing this template:
 
 ```erb
 development:
@@ -48,13 +46,13 @@ development:
   password: <%= configured.database_password %>
 ```
 
-When the following command is run:
+Then run the following command:
 
 ```
 [bundle exec] rake DATABASE_USERNAME=alice DATABASE_PASSWORD=xyzzy config
 ```
 
-The file `config/database.yml` is generated with this content:
+The following "database.yml" file is generated:
 
 ```yaml
 development:
@@ -63,29 +61,15 @@ development:
   password: xyzzy
 ```
 
-Templates can provide defaults, as in the example above, so running just the
-following command:
+See the [feature documentation][features] for further examples and
+functionality.
 
-```
-[bundle exec] rake config
-```
-
-Results in this:
-
-```yaml
-development:
-  database: development
-  username: root
-  password: 
-```
-
-Defaults should be used to make the development environment simple to configure
-and not to hold the values required for deployment.
+[features]: https://www.relishapp.com/mdsol/dice-bag/docs
 
 As discussed in [The Twelve-Factor App section on configuration][2], do not
 commit your generated configuration files to source control. Instead, commit the
 templates to source control and then regenerate the configuration files at
-deployment time by running the rake `config` task.
+deployment time by running the rake `config:deploy` task.
 
 [2]: http://www.12factor.net/config
 
@@ -113,8 +97,8 @@ so that everyone benefits.
 ### Define your own pre-packaged templates
 
 If you want DiceBag to generate your own pre-packaged templates when you run the
-rake `config:generate_all` task, you can create a plug-in. Read the
-`templates.md` file to learn how to do this.
+rake "config:generate_all" task, you can create a plug-in. Read the
+[templates.md](./templates.md) file to learn how to do this.
 
 ## Contributors
 
@@ -122,4 +106,6 @@ rake `config:generate_all` task, you can create a plug-in. Read the
 * [Jordi Carres](https://github.com/jcarres-mdsol)
 * [Dan Hoizner](https://github.com/dhoizner-mdsol)
 * [Aaron Weiner](https://github.com/HonoreDB)
+* [Luke Greene](https://github.com/lgreene-mdsol)
+* [Johnny Lo](https://github.com/jlo188)
 

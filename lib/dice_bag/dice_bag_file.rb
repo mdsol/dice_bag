@@ -5,7 +5,7 @@ require 'dice_bag/version'
 module DiceBag
   module DiceBagFile
     attr_reader :file, :filename
-    @@force = false
+    @@overwrite_all = false
 
     def assert_existence
       unless File.exists?(@file)
@@ -20,9 +20,7 @@ module DiceBag
     end
 
     def should_write?(new_contents)
-      #we always overwrite if we are inside an script or we are not development
-      return true if @@force || !$stdin.tty? || ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'production'
-      return true if !File.exists?(file)
+      return true if @@overwrite_all || !File.exists?(file)
       return false if diff(file, new_contents).empty?
 
       while true
@@ -35,7 +33,7 @@ module DiceBag
         when 'n'
           return false
         when 'a'
-          return @@force = true
+          return @@overwrite_all = true
         when 'q'
           exit
         when 'd'

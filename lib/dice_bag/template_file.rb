@@ -19,7 +19,7 @@ module DiceBag
       @file = Project.config_files(name)
     end
 
-    def create_file(config_file)
+    def create_file(config_file, params)
       # By passing "<>" we're trimming trailing newlines on lines that are
       # nothing but ERB blocks (see documentation). This is useful for files
       # like mauth_key where we want to control newlines carefully.
@@ -30,7 +30,7 @@ module DiceBag
       warning = Warning.new(@filename)
       contents = template.result(binding)
 
-      return unless config_file.should_write?(contents)
+      return unless params[:deploy] || config_file.should_write?(contents)
       config_file.write(contents)
       puts "File '#{config_file.file}' created"
     end
