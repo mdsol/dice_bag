@@ -45,6 +45,22 @@ Feature: Replacing existing configuration files
       config: old value
       """
 
+  Scenario: Deny configuration file replacement with 'No' instead of 'n'
+    Given a file named "config.yml.dice" with:
+      """
+      config: <%= configured.value %>
+      """
+    And a file named "config.yml" with:
+      """
+      config: old value
+      """
+    When I run `rake VALUE='new value' config` interactively
+    And I type "No"
+    Then the file "config.yml" should contain:
+      """
+      config: old value
+      """
+
   Scenario: Replace all configuration files
     Given a file named "config_1.yml.dice" with:
       """
