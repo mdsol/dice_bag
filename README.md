@@ -7,6 +7,12 @@ Twelve-Factor App][1]. Configuration values are picked up from the environment
 and used to populate configuration files from templates. Pre-packaged templates
 for common configuration files are provided.
 
+Although Rails already supports ERB syntax for its YML configuration files, DiceBag will generate a final
+static file that will work without keeping your deployment environment variables in sync with your
+production environment variables. For security reasons, these environment may sometimes be different.
+
+Also DiceBag will work with any kind of text files, not only YML. We use it for initializers in Ruby even.
+
 [1]: http://www.12factor.net/
 
 ## Install
