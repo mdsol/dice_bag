@@ -9,7 +9,7 @@ for common configuration files are provided.
 
 Although Rails already supports ERB syntax for its YML configuration files, DiceBag will generate a final
 static file that will work without keeping your deployment environment variables in sync with your
-production environment variables. For security reasons, these environment may sometimes be different.
+production environment variables. For security reasons, these environments may sometimes differ.
 
 Also DiceBag will work with any kind of text files, not only YML. We use it for initializers in Ruby even.
 
