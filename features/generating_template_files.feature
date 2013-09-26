@@ -1,9 +1,5 @@
 Feature: Generating template files
-
-  Background:
-    # That the directory needs to exist is a bug!
-    Given a directory named "config"
-
+  
   Scenario: Generate standard template files
     Given a file named "Rakefile" with:
       """
@@ -42,8 +38,7 @@ Feature: Generating template files
       """
 
   Scenario: Providing templates for a directory other than 'config'
-    Given a directory named "config/initializers"
-    And a file named "Rakefile" with:
+    Given a file named "Rakefile" with:
       """
       require 'dice_bag/tasks'
       require './my_templates/my_template'

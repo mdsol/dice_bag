@@ -26,7 +26,8 @@ module DiceBag
       while true
         puts "Overwrite #{file} ?    Recommended: Yes. "
         puts " [Y]es, [n]o, [a]ll files, [q]uit, [d]show diff"
-        answer = $stdin.gets.tap{|text| text.strip!.downcase! if text}
+        answer = $stdin.gets
+        answer &&= answer.chars.first.downcase
         case answer
         when 'y'
           return true
