@@ -12,7 +12,8 @@ Although Rails already supports ERB syntax for its YML configuration files, Dice
 static file that will work without keeping your deployment environment variables in sync with your
 production environment variables. For security reasons, these environments may sometimes differ.
 
-Also DiceBag will work with any kind of text files, not only YML. We use it for initializers in Ruby even.
+Also DiceBag will work with any kind of text files, not only YML files. It can be very useful for
+ruby initializer files for instance.
 
 [1]: http://www.12factor.net/
 
