@@ -18,7 +18,9 @@ module DiceBag
     end
 
     def self.templates_to_generate
-      Dir['**/*.dice']
+      FileList.new('**/*.dice') do |fl|
+        fl.exclude(File.join(Bundler.settings[:path],'/**/*')) if defined?(Bundler) && Bundler.settings[:path]
+      end
     end
   end
 end

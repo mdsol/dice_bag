@@ -6,16 +6,12 @@ Feature: Ignore configuration files in bundled gems
   circumstances, we should ignore any Dice Bag configuration files in
   that local directory.
 
-  #@disable-bundler
-
   @announce
-  @original-bundler-environment
+  @clean-bundler-environment
   Scenario: Ignoring files in the bundle path
-    Given a file named ".bundle/config" with:
-      """
-      ---
-      BUNDLE_PATH: excluded-bundled-gems
-      """
+    Given The default aruba timeout is 15 seconds
+    And a Gemfile with dice_bag as a dependency
     And an empty file named "excluded-bundled-gems/subdir/config.yml.dice"
-    When I run `bundle exec rake config`
+    When I run `bundle install --path=excluded-bundled-gems`
+    And I run `bundle exec rake config`
     Then a file named "excluded-bundled-gems/subdir/config.yml" should not exist
