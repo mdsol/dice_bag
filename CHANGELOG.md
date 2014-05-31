@@ -1,3 +1,10 @@
+# 0.8.0
+
+* Fix Template generation fails if the target directory is missing
+* Document that configuration files must not be loaded in Rails config/application.rb
+* Don't overwrite config files if user responds 'No' instead of just 'N'.
+* Omit .dice files in Bundler path or in dot-prefixed directories
+
 # 0.7.1
 
 * The ensure_is_private_key method now additionally supports RSA keys without spaces.
