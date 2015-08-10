@@ -17,11 +17,9 @@ module DiceBag
 
     context 'Running in Rails production environment' do
       before(:each) do
-        #allow(Kernel).to receive(:defined?).and_return(true)
         rails = class_double('Rails')
         allow(rails).to receive_message_chain("env.production?") { true }
         stub_const("Rails", rails)
-        #allow(Kernel).to receive(:Rails).and_return(rails)
       end
 
       it 'returns values ending in ! available in the environment' do
