@@ -81,6 +81,23 @@ deployment time by running the rake `config:deploy` task.
 
 [2]: http://www.12factor.net/config
 
+
+### Ensuring variables are set in production
+
+It is a common pattern to use default information for development but to not
+ allow defaults in production, instead we want to always set up the environment variables
+in production.
+
+It is very easy to discover what variables have not been set in production using a bang after
+the variable name, for instance:
+```
+secret_key: <%= configured.secret_key_base! || 'any text is ok' %>
+```
+Will raise an explanatory error if we are using Rails, we are in production and the
+ variable SECRET_KEY_BASE is not set. In other environments will not care about it
+not being set and will use the default.
+
+
 ## Generate pre-packaged templates
 
 Pre-packaged templates for the following configuration files in the `config`

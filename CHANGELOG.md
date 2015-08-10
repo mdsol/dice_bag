@@ -1,3 +1,9 @@
+# 0.9.0
+
+* Feature: Adding a bang (!) at the end of method names, will raise when the variable
+ not found in production.
+* New relic template to use SSL by default
+
 # 0.8.0
 
 * Fix Template generation fails if the target directory is missing

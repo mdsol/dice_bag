@@ -6,7 +6,7 @@ describe DiceBag::Project do
 
   describe "#name" do 
     it "should give me a default name for non Rails apps" do
-      project.name.should == DiceBag::Project::DEFAULT_NAME
+      expect(project.name).to eq(DiceBag::Project::DEFAULT_NAME)
     end
   end
 
