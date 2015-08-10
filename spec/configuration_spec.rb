@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'dice_bag/configuration'
-require 'byebug'
 module DiceBag
 
   RSpec.describe Configuration do

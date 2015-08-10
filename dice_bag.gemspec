@@ -17,6 +17,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rake'
   s.add_development_dependency 'aruba', '~> 0.8'
   s.add_development_dependency 'rspec', '~> 3.0'
-  s.add_development_dependency 'byebug', '~> 5.0'
   s.add_development_dependency 'bundler'
 end
