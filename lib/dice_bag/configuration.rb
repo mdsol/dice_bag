@@ -28,10 +28,16 @@ module DiceBag
     def ensured_in_production(name)
       variable_name = name.to_s.chomp('!').upcase
       value = ENV[variable_name]
-      if defined?(Rails) && Rails.env.production? && value.nil?
+      if in_production? && value.nil?
         raise "Environment variable #{variable_name} required in production but it was not provided"
       end
       value
+    end
+
+    def in_production?
+      (defined?(Rails) && Rails.env.production?) ||
+      (defined?(Sinatra) && Sinatra::Application.production?) ||
+      ENV['RACK_ENV'] == 'production'
     end
 
     # This class acts like +Configuration+ but with a prefix applied to the
