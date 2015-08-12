@@ -59,3 +59,19 @@ Feature: Creating configuration files
       | config/database.yml                 |
       | config/initializers/secret_token.rb |
 
+  Scenario: Accepting bang(!) methods in a development environment
+    Given a file named "database.yml.dice" with:
+      """
+      development:
+        database: development
+        username: <%= configured.database_username! %>
+        password: <%= configured.database_password! %>
+      """
+    When I run `rake DATABASE_USERNAME=roger DATABASE_PASSWORD=ackroyd config`
+    Then the file "database.yml" should contain:
+      """
+      development:
+        database: development
+        username: roger
+        password: ackroyd
+      """

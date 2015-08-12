@@ -16,7 +16,28 @@ module DiceBag
     end
 
     def method_missing(name)
-      ENV[name.to_s.upcase]
+      if name.to_s.end_with?('!')
+        ensured_in_production(name)
+      else
+        ENV[name.to_s.upcase]
+      end
+    end
+
+    private
+
+    def ensured_in_production(name)
+      variable_name = name.to_s.chomp('!').upcase
+      value = ENV[variable_name]
+      if in_production? && value.nil?
+        raise "Environment variable #{variable_name} required in production but it was not provided"
+      end
+      value
+    end
+
+    def in_production?
+      (defined?(Rails) && Rails.env.production?) ||
+      (defined?(Sinatra) && Sinatra::Application.production?) ||
+      ENV['RACK_ENV'] == 'production'
     end
 
     # This class acts like +Configuration+ but with a prefix applied to the
