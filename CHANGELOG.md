@@ -1,3 +1,7 @@
+# 0.10.0
+
+* Generates diff between template and target file, and allows user to merge changes.  
+
 # 0.9.0
 
 * Feature: Adding a bang (!) at the end of method names, will raise when the variable

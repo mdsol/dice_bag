@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency 'rake'
+  s.add_dependency 'thor', '~> 0'
+  s.add_dependency 'diff-lcs'
   s.add_development_dependency 'aruba', '~> 0.5.1'
   s.add_development_dependency 'rspec', '~> 3.0'
   s.add_development_dependency 'bundler'

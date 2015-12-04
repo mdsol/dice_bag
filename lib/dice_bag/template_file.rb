@@ -2,6 +2,7 @@ require 'dice_bag/dice_bag_file.rb'
 require 'dice_bag/template_helpers'
 require 'dice_bag/configuration'
 require 'dice_bag/warning'
+require 'dice_bag/project'
 
 #this class encapsulates the template files we will generate in the project 
 #using this gem

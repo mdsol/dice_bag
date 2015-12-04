@@ -7,10 +7,10 @@
   username: <%= configured[env].database_username || 'root' %>
   password: <%= configured[env].database_password %>
   host: <%= configured[env].database_host || 'localhost' %>
-  pool: 5
-  timeout: 5000
-  encoding: utf8
-  reconnect: false
+  pool: <%= configured[env].database_pool || 5 %>
+  timeout: <%= configured[env].database_timeout || 5000 %>
+  encoding:  <%= configured[env].database_encoding || 'utf8' %>
+  reconnect:  <%= configured[env].database_reconnect || false %>
   <% db_cert = configured[env].database_ssl_cert %>
   <%= db_cert ? "sslca: #{db_cert}" : '' %>
 <% end %>

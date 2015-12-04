@@ -7,9 +7,9 @@
 # cache configuration code in config/environments/production.rb
 
 development: &default
-  namespace: PROJECT_NAME
-  host: localhost
-  port: 11211
+  namespace: <%= configured.memcached_namespace || 'your_project_namespace' %>
+  host: <%= configured.memcached_host || 'localhost' %>
+  port: <%= configured.memcached_port || 11211 %>
   value_max_bytes: 52428800
   compress: true
 
