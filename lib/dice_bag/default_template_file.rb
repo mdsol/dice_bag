@@ -1,6 +1,5 @@
 require 'dice_bag/dice_bag_file'
 require 'dice_bag/project'
-require 'dice_bag/command'
 
 require 'fileutils'
 require 'tempfile'
@@ -10,7 +9,6 @@ module DiceBag
 
   class DefaultTemplateFile
     include DiceBagFile
-
 
     def initialize(name, location=nil)
       #if called from command line with only a name we search in all our templates for the file

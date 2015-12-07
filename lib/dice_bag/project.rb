@@ -9,10 +9,6 @@ module DiceBag
       defined?(Rails) ? Rails.application.class.parent_name.downcase : DEFAULT_NAME
     end
 
-    def name
-      self.class.name
-    end
-
     def self.config_files(filename)
       File.join(self.root, filename)
     end

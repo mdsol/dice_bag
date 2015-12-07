@@ -39,10 +39,7 @@ module DiceBag
     end
 
     def generate_template(default_template)
-      default_template.assert_existence
       copy_file default_template.file, default_template.destination
-      puts "new template file generated in #{default_template.destination}.
-            execute 'rake config:all' to get the corresponding configuration file."
     end
 
   end
