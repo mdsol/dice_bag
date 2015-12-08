@@ -32,14 +32,14 @@ module DiceBag
     end
 
 
-    def generate_all_templates
+    def generate_all_templates(force=false)
       AvailableTemplates.all.each do |template|
-        generate_template(template)
+        generate_template(template, force)
       end
     end
 
-    def generate_template(default_template)
-      copy_file default_template.file, default_template.destination
+    def generate_template(default_template, force=false)
+      copy_file default_template.file, default_template.destination, force: force
     end
 
   end

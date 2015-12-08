@@ -1,6 +1,7 @@
 # 0.10.0
 
-* Generates diff between template and target file, and allows user to merge changes.  
+* Allows users to choose an appropriate action when source and local templates are different.
+* `config:generate_all` rake task accepts a boolean argument indicating whether to generate templates in 'force mode'.
 
 # 0.9.0
 
