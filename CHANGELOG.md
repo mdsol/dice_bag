@@ -1,7 +1,7 @@
-# 0.10.0
+# 1.0.0
 
-* Allows users to choose an appropriate action when source and local templates are different.
-* `config:generate_all` rake task accepts a boolean argument indicating whether to generate templates in 'force mode'.
+* `config:generate_all` task allows user to choose an appropriate action when source and local templates are different. 
+* `config:generate_all:force` allows user to generate templates in 'force mode' (replacing local templates with the source).
 
 # 0.9.0
 

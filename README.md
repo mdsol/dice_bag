@@ -109,7 +109,7 @@ directory are provided:
 Run the following command to generate them:
 
 ```
-[bundle exec] rake config:generate_all  
+[bundle exec] rake config:generate_all
 ```
 
 This command provides options to compare changes between source and local templates, so new additions to the source templates can be safely added while preserving any project specific customization to local templates.
@@ -117,7 +117,7 @@ This command provides options to compare changes between source and local templa
 Alternatively, to force generate templates (replacing existing local templates with the source), run the following: 
 
 ```
-[bundle exec] rake config:generate_all[true]  
+[bundle exec] rake config:generate_all:force  
 ```
 
 

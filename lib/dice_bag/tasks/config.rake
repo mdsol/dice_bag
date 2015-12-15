@@ -22,16 +22,22 @@ namespace :config do
     DiceBag::Command.new.write(filename)
   end
 
-  desc "Generate all configuration file templates needed by this project"
-  task :generate_all, :force do |t, args|
-    DiceBag::Command.new.generate_all_templates(args[:force])
+  desc 'Generate all configuration file templates with interactive commands (use config:generate_all:force to replace all without asking for input)'
+  task :generate_all do
+    DiceBag::Command.new.generate_all_templates(false)
   end
 
-  desc "Generate just the specified template, optionally in the specified location"
-  task :generate, :filename, :location, :force do |t, args|
+  namespace :generate_all do
+    task :force do
+      DiceBag::Command.new.generate_all_templates(true)
+    end
+  end
+
+  desc 'Generate specified template, optionally in the specified location with options to control file actions'
+  task :generate, :filename, :location do |t, args|
     filename = args[:filename]
     location = args[:location]
-    raise "A filename needs to be provided" if filename.nil?
-    DiceBag::Command.new.generate_template(DiceBag::DefaultTemplateFile.new(filename, location), args[:force])
+    raise 'A filename needs to be provided' if filename.nil?
+    DiceBag::Command.new.generate_template(DiceBag::DefaultTemplateFile.new(filename, location), false)
   end
 end
