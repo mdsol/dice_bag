@@ -112,6 +112,15 @@ Run the following command to generate them:
 [bundle exec] rake config:generate_all
 ```
 
+This command provides options to compare changes between source and local templates, so new additions to the source templates can be safely added while preserving any project specific customization to local templates.
+
+Alternatively, to force generate templates (replacing existing local templates with the source), run the following: 
+
+```
+[bundle exec] rake config:generate_all:force  
+```
+
+
 As with your own templates, you should commit these pre-packaged templates to
 source control.
 

@@ -3,12 +3,19 @@ require 'dice_bag/project'
 require 'dice_bag/config_file'
 require 'dice_bag/template_file'
 require 'dice_bag/default_template_file'
+require 'thor'
 
 module DiceBag
   #This class seems a candidate to be converted to Thor, the problem is that we need to run
   #in the same process than the rake task so all the gems are loaded before dice_bag
   #is called and dice_bag can find what software is used in this project
   class Command
+    include Thor::Base
+    include Thor::Actions
+
+    def self.source_root
+      Dir.pwd
+    end
 
     def write_all(params = {})
       Project.templates_to_generate.each do |template|
@@ -25,15 +32,14 @@ module DiceBag
     end
 
 
-    def generate_all_templates
+    def generate_all_templates(force=false)
       AvailableTemplates.all.each do |template|
-        generate_template(template)
+        generate_template(template, force)
       end
     end
 
-    def generate_template(default_template)
-      default_template.assert_existence
-      default_template.create_file
+    def generate_template(default_template, force=false)
+      copy_file default_template.file, default_template.destination, force: force
     end
 
   end

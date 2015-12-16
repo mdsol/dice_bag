@@ -1,3 +1,8 @@
+# 1.0.0
+
+* `config:generate_all` task allows user to choose an appropriate action when source and local templates are different. 
+* `config:generate_all:force` allows user to generate templates in 'force mode' (replacing local templates with the source).
+
 # 0.9.0
 
 * Feature: Adding a bang (!) at the end of method names, will raise when the variable

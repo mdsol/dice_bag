@@ -18,24 +18,8 @@ module DiceBag
       @filename = File.basename(name)
       @file = name
       @template_location = location
+      @destination = File.join(Project.root, @template_location, @filename)
     end
 
-    def create_file
-      contents = read_template(@file)
-      rooted_template_location = File.join(Project.root, @template_location)
-      FileUtils.mkdir_p(rooted_template_location)
-      template_file = File.join(rooted_template_location, @filename)
-      File.open(template_file, 'w') do |file|
-        file.puts(contents)
-      end
-      puts "new template file generated in #{template_file}.
-            execute 'rake config:all' to get the corresponding configuration file."
-    end
-
-    def read_template(template)
-      # Some templates need the name of the project. We put a placeholder
-      # PROJECT_NAME there, it gets substituted by the real name of the project here
-      File.readlines(template).join.gsub("PROJECT_NAME", Project.name)
-    end
   end
 end
