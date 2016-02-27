@@ -1,3 +1,7 @@
+# 1.1.0
+
+* Removed the template for Newrelic.
+
 # 1.0.0
 
 * `config:generate_all` task allows user to choose an appropriate action when source and local templates are different. 

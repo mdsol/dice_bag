@@ -27,17 +27,13 @@ module DiceBag
         add_template('google_analytics.yml.dice')
       end
 
-      if defined?(NewRelic)
-        add_template('newrelic.yml.dice')
-      end
-
       @needed_templates
     end
 
     def add_template(file)
       pwd = File.dirname(__FILE__)
       @needed_templates.push(File.join(pwd, file))
-    end 
+    end
 
   end
 
