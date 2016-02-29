@@ -100,11 +100,11 @@ not being set and will use the default.
 
 ## Generate pre-packaged templates
 
-Pre-packaged templates for the following configuration files in the `config`
-directory are provided:
+If the corresponding gems are installed, the following pre-packaged templates are provided:
 
-* `database.yml` for [Rails](https://github.com/rails/rails/)
-* `newrelic.yml` for [NewRelic](https://github.com/newrelic/rpm)
+* mysql: `database.yml.dice` for [Rails](https://github.com/rails/rails/)
+* aws-sdk: `aws.yml.dice`
+* dalli: `dalli.yml.dice`
 
 Run the following command to generate them:
 
@@ -117,7 +117,7 @@ This command provides options to compare changes between source and local templa
 Alternatively, to force generate templates (replacing existing local templates with the source), run the following: 
 
 ```
-[bundle exec] rake config:generate_all:force  
+[bundle exec] rake config:generate_all:force
 ```
 
 
