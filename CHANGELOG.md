@@ -1,3 +1,7 @@
+# 1.1.1
+* Updates the database.yml.dice file to not provide settings for test and development when 
+ building in production.
+
 # 1.1.0
 
 * Removed the template for Newrelic.
