@@ -31,7 +31,6 @@ module DiceBag
       template_file.create_file(config_file, params)
     end
 
-
     def generate_all_templates(force=false)
       AvailableTemplates.all.each do |template|
         generate_template(template, force)
@@ -40,6 +39,12 @@ module DiceBag
 
     def generate_template(default_template, force=false)
       copy_file default_template.file, default_template.destination, force: force
+    end
+
+    def generate_gems_templates(gem_names, force=false)
+      AvailableTemplates.all(gem_names).each do |template|
+        generate_template(template, force)
+      end
     end
 
   end
