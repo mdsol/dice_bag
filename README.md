@@ -104,7 +104,7 @@ not being set and will use the default.
 is not desirable you can use the `config:generate_from_gems` task to specify gem names:
 
 ```
-[bundle exec] config:generate_from_gems gem1 gem2 gemN
+[bundle exec] rake config:generate_from_gems gem1 gem2 gemN
 ```
 
 will generate only the templates provided by `gem1`, `gem2` and `gemN`.
