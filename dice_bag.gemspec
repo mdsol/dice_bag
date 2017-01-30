@@ -4,6 +4,7 @@ Gem::Specification.new do |s|
   s.name = 'dice_bag'
   s.version = DiceBag::VERSION
   s.platform = Gem::Platform::RUBY
+  s.required_ruby_version = '>= 1.8.7'
 
   s.authors = ['Andrew Smith', 'Jordi Carres']
   s.email = ['asmith@mdsol.com', 'jcarres@mdsol.com']
