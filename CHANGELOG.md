@@ -1,3 +1,6 @@
+# 1.2.1
+* Replaces `starts_with?` with `start_with?` in DiceBag::AvailableTemplates.checker_within_given_gems?
+
 # 1.2.0
 * Adds a `config:generate_from_gems` task to generate the templates from the specified gems only
 
