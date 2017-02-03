@@ -1,3 +1,6 @@
+# 1.2.1
+* Replaces `starts_with?` with `start_with?` to remove Rails dependency.
+
 # 1.2.0
 * Adds a `config:generate_from_gems` task to generate the templates from the specified gems only
 

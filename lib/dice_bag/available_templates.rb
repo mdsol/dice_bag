@@ -27,7 +27,7 @@ module DiceBag
       def checker_within_given_gems?(checker, gem_names)
         checker_file = checker.method(:templates).source_location[0]
         gem_specs.each do |name, location|
-          return true if checker_file.starts_with?(location) && gem_names.include?(name)
+          return true if checker_file.start_with?(location) && gem_names.include?(name)
         end
         false
       end
