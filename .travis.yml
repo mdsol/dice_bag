@@ -1,10 +1,16 @@
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.1
-  - 2.2.3
-  - 2.3.0
+- 2.0.0
+- 2.1.1
+- 2.2.3
+- 2.3.0
+- 2.4.2
 before_install:
-  - gem update bundler
+- gem update bundler
 script: bundle exec rspec && bundle exec cucumber
+deploy:
+  provider: rubygems
+  api_key:
+    secure: OOaw+kt318CvvkzqnNO6FpbNUdlS4vDK+0LNLD4fgncZ1Lx+cIx3FmBnB3C8MYDWLGciw9qwZ/JnYIn7v9a5IWuC3Yeag+l7KgC5KTxn2j/11NfAPymow+r9RPgsAlkDiUkm7uSw7Se87JsA2l4PZIr5bDhjTKiYXwHL/gaHg2U=
+  on:
+    tags: true
