@@ -16,7 +16,7 @@ Feature: Add warnings to configuration files
       """
       # WARNING! Do not modify this file directly. It was generated from the
       # 'database.yml.dice' template file.
-      # 
+      #
       # Use the rake config task to reconfigure. See the template file for
       # further guidance.
       """
@@ -31,7 +31,7 @@ Feature: Add warnings to configuration files
       """
       # WARNING! Do not modify this file directly. It was generated from the
       # 'secret_token.rb.dice' template file.
-      # 
+      #
       # Use the rake config task to reconfigure. See the template file for
       # further guidance.
       """
@@ -52,4 +52,3 @@ Feature: Add warnings to configuration files
       further guidance.
       -->
       """
-
