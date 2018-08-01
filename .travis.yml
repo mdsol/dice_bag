@@ -14,3 +14,4 @@ deploy:
     secure: OOaw+kt318CvvkzqnNO6FpbNUdlS4vDK+0LNLD4fgncZ1Lx+cIx3FmBnB3C8MYDWLGciw9qwZ/JnYIn7v9a5IWuC3Yeag+l7KgC5KTxn2j/11NfAPymow+r9RPgsAlkDiUkm7uSw7Se87JsA2l4PZIr5bDhjTKiYXwHL/gaHg2U=
   on:
     tags: true
+    condition: "$TRAVIS_RUBY_VERSION == 2.4.2"
