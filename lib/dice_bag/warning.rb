@@ -6,7 +6,7 @@ module DiceBag
     end
 
     def as_ruby_comment
-      lines.map { |line| "# #{line}".rstrip }.join("\n")
+      lines.map { |line| "# #{line}".rstrip }.join("\n") + "\n"
     end
 
     alias :as_yaml_comment :as_ruby_comment

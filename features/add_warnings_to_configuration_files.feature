@@ -10,6 +10,8 @@ Feature: Add warnings to configuration files
     Given a file named "database.yml.dice" with:
       """
       <%= warning.as_yaml_comment %>
+      development:
+        database: local_db
       """
     When I run `rake config`
     Then the file "database.yml" should contain:
@@ -19,12 +21,15 @@ Feature: Add warnings to configuration files
       #
       # Use the rake config task to reconfigure. See the template file for
       # further guidance.
+      development:
+        database: local_db
       """
 
   Scenario: Add a warning in a Ruby file
     Given a file named "secret_token.rb.dice" with:
       """
       <%= warning.as_ruby_comment %>
+      secret_key: 123
       """
     When I run `rake config`
     Then the file "secret_token.rb" should contain:
@@ -34,6 +39,7 @@ Feature: Add warnings to configuration files
       #
       # Use the rake config task to reconfigure. See the template file for
       # further guidance.
+      secret_key: 123
       """
 
   Scenario: Add a warning in a XML file
