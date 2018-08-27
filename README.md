@@ -116,7 +116,7 @@ To force-generate set the `DICEBAG_FORCE` environment variable to any value when
 
 If the corresponding gems are installed, the following pre-packaged templates are provided:
 
-* mysql2: `database.yml.dice` for [Rails](https://github.com/rails/rails/)
+* mysql2 or pg: `database.yml.dice` for [Rails](https://github.com/rails/rails/)
 * aws-sdk: `aws.yml.dice`
 * dalli: `dalli.yml.dice`
 

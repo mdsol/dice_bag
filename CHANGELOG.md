@@ -1,3 +1,6 @@
+# 1.3.0
+* Detect pg gem and generate database.yml.dice for PostgreSQL.
+
 # 1.2.3
 * Fix: Add missing newline after ruby warning message.
 
