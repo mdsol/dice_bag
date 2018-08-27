@@ -1,6 +1,5 @@
 Feature: Generating template files
-  
-  Scenario: Generate standard template files
+  Scenario: Generate database configuration for MySQL
     Given a file named "Rakefile" with:
       """
       require 'dice_bag/tasks'
@@ -9,7 +8,18 @@ Feature: Generating template files
       module Mysql2; end
       """
     When I run `rake config:generate_all`
-    Then a file named "config/database.yml.dice" should exist
+    Then the file "config/database.yml.dice" should match /adapter.*mysql/
+
+  Scenario: Generate database configuration for Postgres
+    Given a file named "Rakefile" with:
+      """
+      require 'dice_bag/tasks'
+
+      # Simulate PG being present.
+      module PG; end
+      """
+    When I run `rake config:generate_all`
+    Then the file "config/database.yml.dice" should match /adapter.*postgres/
 
   Scenario: Creating your own template provider
     Given a file named "Rakefile" with:

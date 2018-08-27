@@ -1,0 +1,18 @@
+<%= warning.as_yaml_comment %>
+
+<% environments = Rails.env.production? ? [:production] : [:development, :test] %>
+
+<% environments.each do |env| %>
+<%= env %>:
+  adapter: <%= configured[env].database_driver || 'postgres' %>
+  database: <%= configured[env].database_name! || "PROJECT_NAME_#{env}" %><%= ('<'+'%=ENV["TEST_ENV_NUMBER"] %'+'>') if (env == :test) %>
+  username: <%= configured[env].database_username! || 'postgres' %>
+  password: <%= configured[env].database_password! %>
+  host: <%= configured[env].database_host! || 'localhost' %>
+  pool: <%= configured[env].database_pool || 5 %>
+  timeout: <%= configured[env].database_timeout || 5000 %>
+  encoding:  <%= configured[env].database_encoding || 'unicode' %>
+  reconnect:  <%= configured[env].database_reconnect || false %>
+  <% db_cert = configured[env].database_ssl_cert %>
+  <%= db_cert ? "sslca: #{db_cert}" : '' %>
+<% end %>
