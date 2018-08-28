@@ -1,3 +1,2 @@
-require 'aruba/cucumber'
-require 'dice_bag'
-
+require "aruba/cucumber"
+require "dice_bag"
