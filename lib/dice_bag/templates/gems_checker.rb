@@ -16,7 +16,9 @@ module DiceBag
       end
 
       if defined?(Mysql2)
-        add_template('database.yml.dice')
+        add_template('databases/mysql.yml.dice', save_as: 'database.yml.dice')
+      elsif defined?(PG)
+        add_template('databases/postgres.yml.dice', save_as: 'database.yml.dice')
       end
 
       if defined?(AWS)
@@ -30,9 +32,9 @@ module DiceBag
       @needed_templates
     end
 
-    def add_template(file)
+    def add_template(file, save_as: nil)
       pwd = File.dirname(__FILE__)
-      @needed_templates.push(File.join(pwd, file))
+      @needed_templates.push([File.join(pwd, file), save_as])
     end
 
   end

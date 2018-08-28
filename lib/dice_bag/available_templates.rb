@@ -48,8 +48,8 @@ module DiceBag
           checker = template_checker.new
           next if !gem_names.empty? && !checker_within_given_gems?(checker, gem_names)
           location = checker.templates_location
-          checker.templates.each do |template|
-            available_templates.push( DefaultTemplateFile.new(template, location) )
+          checker.templates.each do |template, save_as|
+            available_templates.push( DefaultTemplateFile.new(template, location, save_as) )
           end
         end
         available_templates

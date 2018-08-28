@@ -10,12 +10,12 @@ module DiceBag
   class DefaultTemplateFile
     include DiceBagFile
 
-    def initialize(name, location=nil)
+    def initialize(name, location=nil, save_as=nil)
       #if called from command line with only a name we search in all our templates for the file
       if (File.dirname(name) == '.')
         name = AvailableTemplates.template_filename_for(name)
       end
-      @filename = File.basename(name)
+      @filename = File.basename(save_as || name)
       @file = name
       @template_location = location
       @destination = File.join(Project.root, @template_location, @filename)
