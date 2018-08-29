@@ -1,4 +1,4 @@
-require_relative 'dice_bag/available_templates'
+require_relative "dice_bag/available_templates"
 module DiceBag
-  require 'dice_bag/railtie' if defined?(Rails)
+  require "dice_bag/railtie" if defined?(Rails)
 end

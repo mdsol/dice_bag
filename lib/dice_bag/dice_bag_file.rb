@@ -1,4 +1,4 @@
-require 'dice_bag/version'
+require "dice_bag/version"
 
 # This module contains common methods for all the type of files Dicebag knows about:
 # configuration files, templates files in the project an templates files shipped with dicebag
@@ -14,7 +14,7 @@ module DiceBag
     end
 
     def write(contents)
-      File.open(@file, 'w') do |file|
+      File.open(@file, "w") do |file|
         file.puts(contents)
       end
     end
@@ -29,15 +29,15 @@ module DiceBag
         answer = $stdin.gets
         answer &&= answer.chars.first.downcase
         case answer
-        when 'y'
+        when "y"
           return true
-        when 'n'
+        when "n"
           return false
-        when 'a'
+        when "a"
           return @@overwrite_all = true
-        when 'q'
+        when "q"
           exit
-        when 'd'
+        when "d"
           puts diff(file, new_contents)
         else
           return true
@@ -46,8 +46,9 @@ module DiceBag
     end
 
     private
+
     def diff(destination, content)
-      diff_cmd = ENV['RAILS_DIFF'] || 'diff -u'
+      diff_cmd = ENV["RAILS_DIFF"] || "diff -u"
       Tempfile.open(File.basename(destination), File.dirname(destination)) do |temp|
         temp.write content
         temp.rewind

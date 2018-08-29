@@ -1,12 +1,10 @@
 module DiceBag
-
   # This class abstracts access to configuration values, to be used within ERB
   # templates. Currently, the values are read from the environment, as per the
   # Twelve-Factor App principles.
   class Configuration
-
     def initialize
-      @prefixed = Hash.new
+      @prefixed = {}
     end
 
     # Returns a Configuration::PrefixedWithFallback using the given +prefix+.
@@ -16,7 +14,7 @@ module DiceBag
     end
 
     def method_missing(name)
-      if name.to_s.end_with?('!')
+      if name.to_s.end_with?("!")
         ensured_in_production(name)
       else
         ENV[name.to_s.upcase]
@@ -26,7 +24,7 @@ module DiceBag
     private
 
     def ensured_in_production(name)
-      variable_name = name.to_s.chomp('!').upcase
+      variable_name = name.to_s.chomp("!").upcase
       value = ENV[variable_name]
       if in_production? && value.nil?
         raise "Environment variable #{variable_name} required in production but it was not provided"
@@ -36,8 +34,8 @@ module DiceBag
 
     def in_production?
       (defined?(Rails) && Rails.env.production?) ||
-      (defined?(Sinatra) && Sinatra::Application.production?) ||
-      ENV['RACK_ENV'] == 'production'
+        (defined?(Sinatra) && Sinatra::Application.production?) ||
+        ENV["RACK_ENV"] == "production"
     end
 
     # This class acts like +Configuration+ but with a prefix applied to the
@@ -53,9 +51,8 @@ module DiceBag
       end
 
       def method_missing(name)
-        ENV["#{ @prefix }_#{ name.to_s.upcase }"] || @fallback.send(name)
+        ENV["#{@prefix}_#{name.to_s.upcase}"] || @fallback.send(name)
       end
     end
   end
-
 end

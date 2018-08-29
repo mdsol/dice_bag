@@ -1,6 +1,5 @@
 module DiceBag
   class Warning
-
     def initialize(template_filename)
       @template_filename = template_filename
     end
@@ -12,7 +11,7 @@ module DiceBag
     alias :as_yaml_comment :as_ruby_comment
 
     def as_xml_comment
-      ['<!--', lines, '-->'].flatten.join("\n")
+      ["<!--", lines, "-->"].flatten.join("\n")
     end
 
     protected
