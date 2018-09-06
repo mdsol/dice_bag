@@ -4,7 +4,7 @@
 
 <% environments.each do |env| %>
 <%= env %>:
-  adapter: <%= configured[env].database_driver || 'postgres' %>
+  adapter: <%= configured[env].database_driver || 'postgresql' %>
   database: <%= configured[env].database_name! || "PROJECT_NAME_#{env}" %><%= ('<'+'%=ENV["TEST_ENV_NUMBER"] %'+'>') if (env == :test) %>
   username: <%= configured[env].database_username! || 'postgres' %>
   password: <%= configured[env].database_password! %>
