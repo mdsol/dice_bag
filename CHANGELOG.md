@@ -1,3 +1,6 @@
+# 1.3.1
+* Fix adapter name in the database.yml.dice template for PostgreSQL.
+
 # 1.3.0
 * Detect pg gem and generate database.yml.dice for PostgreSQL.
 

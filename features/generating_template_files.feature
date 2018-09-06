@@ -19,7 +19,7 @@ Feature: Generating template files
       module PG; end
       """
     When I run `rake config:generate_all`
-    Then the file "config/database.yml.dice" should match /adapter.*postgres/
+    Then the file "config/database.yml.dice" should match /adapter.*postgresql/
 
   Scenario: Creating your own template provider
     Given a file named "Rakefile" with:
