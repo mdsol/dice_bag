@@ -6,6 +6,8 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = ">= 1.8.7"
 
+  s.license = 'MIT'
+
   s.authors = ["Andrew Smith", "Jordi Carres"]
   s.email = ["asmith@mdsol.com", "jcarres@mdsol.com"]
   s.summary = "Dice Bag is a library of rake tasks for configuring web apps in the style of The Twelve-Factor App. It also provides continuous integration tasks that rely on the configuration tasks."
