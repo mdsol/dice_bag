@@ -8,7 +8,7 @@ Feature: Ignore configuration files in bundled gems
 
   @clean-bundler-environment
   Scenario: Ignoring files in the bundle path
-    Given The default aruba timeout is 15 seconds
+    Given the default aruba timeout is 15 seconds
     And a Gemfile with dice_bag as a dependency
     And an empty file named "excluded-bundled-gems/subdir/config.yml.dice"
     When I run `bundle install --path=excluded-bundled-gems`
@@ -17,7 +17,7 @@ Feature: Ignore configuration files in bundled gems
 
   @clean-bundler-environment
   Scenario: Not ignoring files outside the bundle path
-    Given The default aruba timeout is 15 seconds
+    Given the default aruba timeout is 15 seconds
     And a Gemfile with dice_bag as a dependency
     And an empty file named "subdir/config.yml.dice"
     When I run `bundle install --path=excluded-bundled-gems`

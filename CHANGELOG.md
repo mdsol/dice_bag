@@ -1,3 +1,6 @@
+# 1.3.2
+* Gem specifies MIT license
+
 # 1.3.1
 * Fix adapter name in the database.yml.dice template for PostgreSQL.
 

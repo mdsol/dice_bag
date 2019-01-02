@@ -1,11 +1,13 @@
 language: ruby
+cache: bundler
 rvm:
-- 2.3.7
-- 2.4.4
-- 2.5.1
-before_install:
-- gem update bundler
-script: bundle exec rspec && bundle exec cucumber
+- 2.3.8
+- 2.4.5
+- 2.5.3
+- 2.6.0
+script:
+  - bundle exec rspec
+  - bundle exec cucumber
 deploy:
   provider: rubygems
   api_key:
