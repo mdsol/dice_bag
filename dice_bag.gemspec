@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = "dice_bag"
   s.version = DiceBag::VERSION
   s.platform = Gem::Platform::RUBY
-  s.required_ruby_version = ">= 1.8.7"
+  s.required_ruby_version = ">= 2.3.0"
 
   s.license = 'MIT'
 
@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rake"
   s.add_dependency "thor", "~> 0.0"
   s.add_dependency "diff-lcs", "~> 1.0"
-  s.add_development_dependency "aruba", "~> 0.5.1"
+  s.add_development_dependency "aruba", "~> 0.6.0"
   s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "bundler"
 end
