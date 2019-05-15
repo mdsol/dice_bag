@@ -11,7 +11,10 @@ Gem::Specification.new do |s|
   s.authors = ["Andrew Smith", "Jordi Carres"]
   s.email = ["asmith@mdsol.com", "jcarres@mdsol.com"]
   s.summary = "Dice Bag is a library of rake tasks for configuring web apps in the style of The Twelve-Factor App. It also provides continuous integration tasks that rely on the configuration tasks."
-  s.homepage = "https://github.com/mdsol/dice_bag"
+  s.metadata = {
+    "homepage_uri" => "https://github.com/mdsol/dice_bag",
+    "changelog_uri" => "https://github.com/mdsol/dice_bag/blob/develop/CHANGELOG.md"
+  }
 
   s.files = Dir["lib/**/*"]
   s.test_files = Dir["spec/**/*"]

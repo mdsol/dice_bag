@@ -1,17 +1,22 @@
 language: ruby
 cache: bundler
 rvm:
-- 2.3.8
-- 2.4.5
-- 2.5.5
-- 2.6.2
+  - 2.3.8
+  - 2.4.6
+  - 2.5.5
+  - 2.6.3
+
+before_install:
+  - gem update --system -N > /dev/null && echo "Rubygems version $(gem --version)"
+
 script:
   - bundle exec rspec
   - bundle exec cucumber
+
 deploy:
   provider: rubygems
   api_key:
     secure: OOaw+kt318CvvkzqnNO6FpbNUdlS4vDK+0LNLD4fgncZ1Lx+cIx3FmBnB3C8MYDWLGciw9qwZ/JnYIn7v9a5IWuC3Yeag+l7KgC5KTxn2j/11NfAPymow+r9RPgsAlkDiUkm7uSw7Se87JsA2l4PZIr5bDhjTKiYXwHL/gaHg2U=
   on:
     tags: true
-    condition: "$TRAVIS_RUBY_VERSION == 2.6.2"
+    condition: "$TRAVIS_RUBY_VERSION == 2.6.3"

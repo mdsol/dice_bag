@@ -3,9 +3,12 @@ module DiceBag
   class Project
     DEFAULT_NAME = "project"
 
+    # TODO: how to find the name of the project in non Rails apps?
     def self.name
-      # TODO: how to do find the name of the project in no-rails environments?
-      defined?(Rails) ? Rails.application.class.parent_name.downcase : DEFAULT_NAME
+      return DEFAULT_NAME unless defined?(Rails)
+
+      parent_name_method = Module.respond_to?(:module_parent_name) ? :module_parent_name : :parent_name
+      Rails.application.class.send(parent_name_method).downcase
     end
 
     def self.config_files(filename)
