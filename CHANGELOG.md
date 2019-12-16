@@ -1,3 +1,6 @@
+# 1.3.4
+* Depend on Thor ~> 1.0.
+
 # 1.3.3
 * Address a deprecation warning when using Rails 6.0.
 
