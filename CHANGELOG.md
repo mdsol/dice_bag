@@ -1,3 +1,6 @@
+# 1.3.4
+* Remove extra spaces from the database templates.
+
 # 1.3.3
 * Address a deprecation warning when using Rails 6.0.
 

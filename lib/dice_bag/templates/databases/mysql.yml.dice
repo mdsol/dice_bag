@@ -12,8 +12,8 @@
   port: <%= configured[env].database_port || 3306 %>
   pool: <%= configured[env].database_pool || 5 %>
   timeout: <%= configured[env].database_timeout || 5000 %>
-  encoding:  <%= configured[env].database_encoding || 'utf8' %>
-  reconnect:  <%= configured[env].database_reconnect || false %>
+  encoding: <%= configured[env].database_encoding || 'utf8' %>
+  reconnect: <%= configured[env].database_reconnect || false %>
   <% db_cert = configured[env].database_ssl_cert %>
   <%= db_cert ? "sslca: #{db_cert}" : '' %>
 <% end %>
