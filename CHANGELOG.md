@@ -1,3 +1,6 @@
+# 1.4.0
+* Allow thor 0.x and 1.x.
+
 # 1.3.4
 * Remove extra spaces from the database templates.
 
