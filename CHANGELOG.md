@@ -1,3 +1,6 @@
+# 1.4.1
+* Bundle extra files in the gem (MIT-LICENSE etc.).
+
 # 1.4.0
 * Allow thor 0.x and 1.x.
 
