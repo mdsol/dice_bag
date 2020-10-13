@@ -22,11 +22,11 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.3"
 
+  s.add_dependency "diff-lcs", "~> 1.0"
   s.add_dependency "rake"
   s.add_dependency "thor", "< 2.0"
-  s.add_dependency "diff-lcs", "~> 1.0"
 
   s.add_development_dependency "aruba", "~> 0.6.0"
-  s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "bundler"
+  s.add_development_dependency "rspec", "~> 3.0"
 end

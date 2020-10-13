@@ -29,6 +29,7 @@ module DiceBag
       if in_production? && value.nil?
         raise "Environment variable #{variable_name} required in production but it was not provided"
       end
+
       value
     end
 

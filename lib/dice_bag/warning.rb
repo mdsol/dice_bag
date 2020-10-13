@@ -8,7 +8,7 @@ module DiceBag
       lines.map { |line| "# #{line}".rstrip }.join("\n") + "\n"
     end
 
-    alias :as_yaml_comment :as_ruby_comment
+    alias as_yaml_comment as_ruby_comment
 
     def as_xml_comment
       ["<!--", lines, "-->"].flatten.join("\n")
@@ -19,7 +19,7 @@ module DiceBag
     def lines
       [
         "WARNING! Do not modify this file directly. It was generated from the",
-        "'#@template_filename' template file.",
+        "'#{@template_filename}' template file.",
         "",
         "Use the rake config task to reconfigure. See the template file for",
         "further guidance."

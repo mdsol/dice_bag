@@ -11,10 +11,12 @@ rvm:
 
 before_install:
   - gem update --system -N > /dev/null && echo "Rubygems version $(gem --version)"
+  - gem install rubocop
 
 script:
-  - bundle exec rspec
-  - bundle exec cucumber
+  - bundle exec rspec --format progress
+  - bundle exec cucumber --format progress
+  - rubocop
 
 deploy:
   provider: rubygems
