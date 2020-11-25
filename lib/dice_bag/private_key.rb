@@ -10,7 +10,7 @@ module DiceBag
       require "openssl"
 
       begin
-        OpenSSL::PKey::RSA.new @private_key
+        rsa_object
         true
       rescue => e
         puts "#{e.message}\n#{e.backtrace}"
@@ -23,6 +23,14 @@ module DiceBag
       body = @private_key.split(/\s+/)
       body = body.first.scan(/.{1,64}/) if body.length == 1
       @private_key = [HEADER, body, FOOTER].flatten.join("\n")
+    end
+
+    def public_key
+      rsa_object.public_key
+    end
+
+    def rsa_object
+      @rsa_object ||= OpenSSL::PKey::RSA.new(@private_key)
     end
 
     private

@@ -1,3 +1,6 @@
+# 1.5.0
+* Add ability to generate and verify x509 certificates.
+
 # 1.4.1
 * Bundle extra files in the gem (MIT-LICENSE etc.).
 
