@@ -5,6 +5,7 @@ require "dice_bag/version"
 module DiceBag
   module DiceBagFile
     attr_reader :file, :filename, :destination
+
     @@overwrite_all = false
 
     def assert_existence

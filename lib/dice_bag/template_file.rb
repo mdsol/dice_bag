@@ -1,4 +1,4 @@
-require "dice_bag/dice_bag_file.rb"
+require "dice_bag/dice_bag_file"
 require "dice_bag/template_helpers"
 require "dice_bag/configuration"
 require "dice_bag/warning"

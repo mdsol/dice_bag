@@ -1,4 +1,4 @@
-require "dice_bag/dice_bag_file.rb"
+require "dice_bag/dice_bag_file"
 require "dice_bag/project"
 
 # this class encapsulate a configuration file of the project
