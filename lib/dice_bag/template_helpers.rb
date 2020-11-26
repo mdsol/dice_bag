@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dice_bag/private_key"
 
 module DiceBag

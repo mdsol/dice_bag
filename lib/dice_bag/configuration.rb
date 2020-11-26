@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiceBag
   # This class abstracts access to configuration values, to be used within ERB
   # templates. Currently, the values are read from the environment, as per the

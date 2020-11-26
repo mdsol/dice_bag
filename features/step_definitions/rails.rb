@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^I am running Rails in production$/) do
 end
 class RailsEnv

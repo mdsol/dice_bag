@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "erb"
 require "dice_bag/command"
 
-FORCE_ENV_VAR = "DICEBAG_FORCE".freeze
+FORCE_ENV_VAR = "DICEBAG_FORCE"
 
 desc "Populate all templates using values from the environment to create configuration files"
 task config: ["config:all"]

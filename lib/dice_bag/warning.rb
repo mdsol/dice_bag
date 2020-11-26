@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiceBag
   class Warning
     def initialize(template_filename)

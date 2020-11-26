@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dice_bag/version"
 
 # This module contains common methods for all the type of files Dicebag knows about:

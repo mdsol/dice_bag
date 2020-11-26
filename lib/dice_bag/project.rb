@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # This class encapsulate data about the project dice_bag got in
 module DiceBag
   class Project
-    DEFAULT_NAME = "project".freeze
+    DEFAULT_NAME = "project"
 
     # TODO: how to find the name of the project in non Rails apps?
     def self.name

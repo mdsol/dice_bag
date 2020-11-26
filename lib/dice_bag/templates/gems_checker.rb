@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This module has the logic that decides what templates will be
 # generated for this project.
 # this file lives in the same directory than all the templates it

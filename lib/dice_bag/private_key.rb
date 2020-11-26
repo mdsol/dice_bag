@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiceBag
   class PrivateKey
     attr_accessor :private_key
@@ -35,8 +37,8 @@ module DiceBag
 
     private
 
-    HEADER = "-----BEGIN RSA PRIVATE KEY-----".freeze
-    FOOTER = "-----END RSA PRIVATE KEY-----".freeze
+    HEADER = "-----BEGIN RSA PRIVATE KEY-----"
+    FOOTER = "-----END RSA PRIVATE KEY-----"
 
     def strip_down_key
       @private_key.gsub!(HEADER, "")
