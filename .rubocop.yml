@@ -6,3 +6,21 @@ Style/StringLiterals:
 
 Style/RescueStandardError:
   EnforcedStyle: implicit
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - namespace
+    - describe
+    - context
+  Max: 10
+
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
+Metrics/MethodLength:
+  ExcludedMethods:
+    - should_write?
+    - generate_509_certificate
+    - generate_root_ca
+  Max: 11
+
+Layout/LineLength:
+  Max: 120

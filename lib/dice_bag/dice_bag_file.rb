@@ -24,6 +24,7 @@ module DiceBag
       return true if @@overwrite_all || !File.exist?(file)
       return false if diff(file, new_contents).empty?
 
+      # rubocop:disable Metrics/BlockLength
       loop do
         puts "Overwrite #{file} ?    Recommended: Yes. "
         puts " [Y]es, [n]o, [a]ll files, [q]uit, [d]show diff"
@@ -44,6 +45,7 @@ module DiceBag
           return true
         end
       end
+      # rubocop:enable Metrics/BlockLength
     end
 
     private

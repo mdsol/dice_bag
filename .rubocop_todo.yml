@@ -29,21 +29,10 @@ Lint/UselessAssignment:
 Metrics/AbcSize:
   Max: 35
 
-# Offense count: 4
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
-# ExcludedMethods: refine
-Metrics/BlockLength:
-  Max: 36
-
 # Offense count: 1
 # Configuration parameters: IgnoredMethods.
 Metrics/CyclomaticComplexity:
   Max: 10
-
-# Offense count: 4
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
-Metrics/MethodLength:
-  Max: 22
 
 # Offense count: 1
 # Configuration parameters: ForbiddenDelimiters.
@@ -116,10 +105,3 @@ Style/OptionalBooleanParameter:
 Style/StringConcatenation:
   Exclude:
     - 'lib/dice_bag/warning.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
-# URISchemes: http, https
-Layout/LineLength:
-  Max: 205

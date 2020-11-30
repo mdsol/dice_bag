@@ -27,7 +27,8 @@ namespace :config do
     DiceBag::Command.new.write(filename)
   end
 
-  desc "Generate all configuration file templates with interactive commands (use config:generate_all:force to replace all without asking for input)"
+  desc "Generate all configuration file templates with interactive commands " \
+       "(use config:generate_all:force to replace all without asking for input)"
   task :generate_all do
     DiceBag::Command.new.generate_all_templates(false)
   end
@@ -47,7 +48,8 @@ namespace :config do
     DiceBag::Command.new.generate_template(DiceBag::DefaultTemplateFile.new(filename, location), false)
   end
 
-  desc "Generate the templates from the specified gems only ('config:generate_from_gems gem1 gem2 gemN', set the env variable '#{FORCE_ENV_VAR}' to overwrite the templates without asking for confirmation)"
+  desc "Generate the templates from the specified gems only ('config:generate_from_gems gem1 gem2 gemN'," \
+       " set the env variable '#{FORCE_ENV_VAR}' to overwrite the templates without asking for confirmation)"
   task :generate_from_gems, :names do |_t, _args|
     ARGV.each { |a| task a.to_sym do; end }
     names = ARGV[1..-1]
