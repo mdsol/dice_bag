@@ -1,6 +1,6 @@
 # DiceBag
 
-[![Build Status](https://travis-ci.org/mdsol/dice_bag.svg?branch=develop)](https://travis-ci.org/mdsol/dice_bag)
+[![Build Status](https://travis-ci.com/mdsol/dice_bag.svg?branch=develop)](https://travis-ci.com/mdsol/dice_bag)
 [![Code Climate](https://codeclimate.com/github/mdsol/dice_bag.png)](https://codeclimate.com/github/mdsol/dice_bag)
 
 DiceBag is a library of rake tasks for configuring web apps in the style of [The
