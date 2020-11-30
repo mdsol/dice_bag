@@ -11,7 +11,7 @@ rvm:
 
 before_install:
   - gem update --system -N > /dev/null && echo "Rubygems version $(gem --version)"
-  - gem install rubocop
+  - gem install rubocop:1.3.1
 
 script:
   - bundle exec rspec --format progress
