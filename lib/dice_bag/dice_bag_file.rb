@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dice_bag/version"
 
 # This module contains common methods for all the type of files Dicebag knows about:
@@ -5,12 +7,11 @@ require "dice_bag/version"
 module DiceBag
   module DiceBagFile
     attr_reader :file, :filename, :destination
+
     @@overwrite_all = false
 
     def assert_existence
-      unless File.exists?(@file)
-        raise "File #{@file} not found. Configuration file not created"
-      end
+      raise "File #{@file} not found. Configuration file not created" unless File.exist?(@file)
     end
 
     def write(contents)
@@ -20,10 +21,11 @@ module DiceBag
     end
 
     def should_write?(new_contents)
-      return true if @@overwrite_all || !File.exists?(file)
+      return true if @@overwrite_all || !File.exist?(file)
       return false if diff(file, new_contents).empty?
 
-      while true
+      # rubocop:disable Metrics/BlockLength
+      loop do
         puts "Overwrite #{file} ?    Recommended: Yes. "
         puts " [Y]es, [n]o, [a]ll files, [q]uit, [d]show diff"
         answer = $stdin.gets
@@ -43,6 +45,7 @@ module DiceBag
           return true
         end
       end
+      # rubocop:enable Metrics/BlockLength
     end
 
     private

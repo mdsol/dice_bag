@@ -1,4 +1,6 @@
-require "dice_bag/dice_bag_file.rb"
+# frozen_string_literal: true
+
+require "dice_bag/dice_bag_file"
 require "dice_bag/template_helpers"
 require "dice_bag/configuration"
 require "dice_bag/warning"

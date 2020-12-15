@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This module has the logic that decides what templates will be
 # generated for this project.
 # this file lives in the same directory than all the templates it
@@ -10,9 +12,7 @@ module DiceBag
       @needed_templates = []
       configured = Configuration.new
 
-      if defined?(Dalli)
-        add_template("dalli.yml.dice")
-      end
+      add_template("dalli.yml.dice") if defined?(Dalli)
 
       if defined?(Mysql2)
         add_template("databases/mysql.yml.dice", save_as: "database.yml.dice")
@@ -20,13 +20,9 @@ module DiceBag
         add_template("databases/postgres.yml.dice", save_as: "database.yml.dice")
       end
 
-      if defined?(AWS)
-        add_template("aws.yml.dice")
-      end
+      add_template("aws.yml.dice") if defined?(AWS)
 
-      if configured.google_analytics_id
-        add_template("google_analytics.yml.dice")
-      end
+      add_template("google_analytics.yml.dice") if configured.google_analytics_id
 
       @needed_templates
     end

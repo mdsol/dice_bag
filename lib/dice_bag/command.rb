@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dice_bag/available_templates"
 require "dice_bag/project"
 require "dice_bag/config_file"

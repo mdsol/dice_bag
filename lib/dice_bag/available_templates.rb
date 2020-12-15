@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rubygems"
 require "dice_bag/default_template_file"
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class encapsulate data about the project dice_bag got in
 module DiceBag
   class Project

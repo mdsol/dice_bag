@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dice_bag/private_key"
 
 module DiceBag
@@ -36,7 +38,7 @@ module DiceBag
       ef.issuer_certificate = root_ca
       cert.add_extension(ef.create_extension("keyUsage", "digitalSignature", true))
       cert.add_extension(ef.create_extension("subjectKeyIdentifier", "hash", false))
-      cert.sign(root_key, OpenSSL::Digest::SHA256.new)
+      cert.sign(root_key, OpenSSL::Digest.new("SHA256"))
       cert
     end
 
@@ -67,7 +69,7 @@ module DiceBag
       root_ca.add_extension(ef.create_extension("keyUsage", "keyCertSign, cRLSign", true))
       root_ca.add_extension(ef.create_extension("subjectKeyIdentifier", "hash", false))
       root_ca.add_extension(ef.create_extension("authorityKeyIdentifier", "keyid:always", false))
-      root_ca.sign(root_key, OpenSSL::Digest::SHA256.new)
+      root_ca.sign(root_key, OpenSSL::Digest.new("SHA256"))
     end
   end
 end
