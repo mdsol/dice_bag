@@ -11,15 +11,15 @@ Style/RescueStandardError:
   EnforcedStyle: implicit
 
 Metrics/BlockLength:
-  ExcludedMethods:
+  IgnoredMethods:
     - namespace
     - describe
     - context
   Max: 10
 
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
+# Configuration parameters: CountComments, CountAsOne, IgnoredMethods.
 Metrics/MethodLength:
-  ExcludedMethods:
+  IgnoredMethods:
     - should_write?
     - generate_509_certificate
     - generate_root_ca

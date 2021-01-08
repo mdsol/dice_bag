@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "aruba", "~> 0.6.0"
   s.add_development_dependency "bundler"
   s.add_development_dependency "rspec", "~> 3.0"
+  s.add_development_dependency "rubocop", "~> 1.8"
 end

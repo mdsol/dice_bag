@@ -3,6 +3,7 @@
 
 # We're a library, so we avoid overly constraining clients.
 Gemfile.lock
+.byebug_history
 
 # Temporary files such as those created by aruba when running scenarios.
 /tmp
