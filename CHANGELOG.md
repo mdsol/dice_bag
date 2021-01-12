@@ -1,3 +1,6 @@
+# 1.6.0
+* Drop support for Ruby 2.3 and 2.4.
+
 # 1.5.0
 * Add ability to generate and verify x509 certificates.
 
