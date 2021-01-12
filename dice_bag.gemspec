@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = ">= 2.3"
+  s.required_ruby_version = ">= 2.5"
 
   s.add_dependency "diff-lcs", "~> 1.0"
   s.add_dependency "rake"
@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "aruba", "~> 0.6.0"
   s.add_development_dependency "bundler"
   s.add_development_dependency "rspec", "~> 3.0"
+  s.add_development_dependency "rubocop", "~> 1.8"
 end
