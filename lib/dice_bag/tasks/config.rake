@@ -9,7 +9,6 @@ desc "Populate all templates using values from the environment to create configu
 task config: ["config:all"]
 
 namespace :config do
-  # Deprecated, present only for backward compatibility.
   task :all do
     DiceBag::Command.new.write_all
   end
