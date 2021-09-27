@@ -16,11 +16,10 @@ module DiceBag
 
     class << self
       def gem_specs
-        @gem_specs ||= begin
+        @gem_specs ||=
           Gem::Specification.sort.each_with_object({}) do |spec, hsh|
             hsh[spec.name] = spec.full_gem_path
           end
-        end
       end
 
       def checker_within_given_gems?(checker, gem_names)

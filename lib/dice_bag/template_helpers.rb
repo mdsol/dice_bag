@@ -32,7 +32,7 @@ module DiceBag
       cert.issuer = root_ca.subject # root CA is the issuer
       cert.public_key = PrivateKey.new(private_key.dup).public_key
       cert.not_before = Time.now
-      cert.not_after = cert.not_before + 1 * 365 * 24 * 60 * 60 # 1 years validity
+      cert.not_after = cert.not_before + (1 * 365 * 24 * 60 * 60) # 1 years validity
       ef = OpenSSL::X509::ExtensionFactory.new
       ef.subject_certificate = cert
       ef.issuer_certificate = root_ca
@@ -61,7 +61,7 @@ module DiceBag
       root_ca.issuer = root_ca.subject # root CA's are "self-signed"
       root_ca.public_key = root_key.public_key
       root_ca.not_before = Time.now
-      root_ca.not_after = root_ca.not_before + 2 * 365 * 24 * 60 * 60 # 2 years validity
+      root_ca.not_after = root_ca.not_before + (2 * 365 * 24 * 60 * 60) # 2 years validity
       ef = OpenSSL::X509::ExtensionFactory.new
       ef.subject_certificate = root_ca
       ef.issuer_certificate = root_ca
