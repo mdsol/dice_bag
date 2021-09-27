@@ -19,7 +19,7 @@ script:
 deploy:
   provider: rubygems
   api_key:
-    secure: OOaw+kt318CvvkzqnNO6FpbNUdlS4vDK+0LNLD4fgncZ1Lx+cIx3FmBnB3C8MYDWLGciw9qwZ/JnYIn7v9a5IWuC3Yeag+l7KgC5KTxn2j/11NfAPymow+r9RPgsAlkDiUkm7uSw7Se87JsA2l4PZIr5bDhjTKiYXwHL/gaHg2U=
+    secure: Ud+Z/H3VkWVo59nzySJn/3XB9LLGdLe7jtjQoJDGmhiyzruAqelwv+bVf7sckEWTvwGbyPNiiQRs0Exi1m2hDQW2IwH/iHMd4l/LAY2Cq1875rpSTYF0SA1TAbE50eYcIZitvEvA3L0HAX/pBPUejqWcHVZ1dBxG0uf0n/ChWZs=
   on:
     tags: true
     condition: "$TRAVIS_RUBY_VERSION == 2.7"
