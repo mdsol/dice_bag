@@ -19,11 +19,6 @@ module DiceBag
     end
 
     def create_file(config_file, params)
-      # By passing "<>" we're trimming trailing newlines on lines that are
-      # nothing but ERB blocks (see documentation). This is useful for files
-      # like mauth_key where we want to control newlines carefully.
-      template = ERB.new(File.read(@file), nil, "<>")
-
       # templates expect a configured object
       configured = Configuration.new
       warning = Warning.new(@filename)
@@ -33,6 +28,15 @@ module DiceBag
 
       config_file.write(contents)
       puts "File '#{config_file.file}' created"
+    end
+
+    private
+
+    def template
+      # By passing "<>" we're trimming trailing newlines on lines that are
+      # nothing but ERB blocks (see documentation). This is useful for files
+      # like mauth_key where we want to control newlines carefully.
+      RUBY_VERSION >= "2.6.0" ? ERB.new(File.read(@file), trim_mode: "<>") : ERB.new(File.read(@file), nil, "<>")
     end
   end
 end
