@@ -3,6 +3,9 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   NewCops: enable
 
+Gemspec/RequireMFA:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
