@@ -1,0 +1,4 @@
+development:
+  database: development
+  username: <%= configured.database_username || 'root' %>
+  password: <%= configured.database_password %>

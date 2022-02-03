@@ -1,3 +1,7 @@
+# 1.6.1
+* Use keyword argument for ERB.new to suppress deprecated warnings.
+* Use default bundle path (`vendor/bundle`) when `Bundler.settings[:path]` returns nil.
+
 # 1.6.0
 * Drop support for Ruby 2.3 and 2.4.
 

@@ -4,6 +4,7 @@
 module DiceBag
   class Project
     DEFAULT_NAME = "project"
+    DEFAULT_BUNDLE_PATH = "vendor/bundle"
 
     # TODO: how to find the name of the project in non Rails apps?
     def self.name
@@ -22,8 +23,9 @@ module DiceBag
     end
 
     def self.templates_to_generate
+      bundle_path = (defined?(Bundler) && Bundler.settings[:path]) || DEFAULT_BUNDLE_PATH
       FileList.new("**/*.dice") do |fl|
-        fl.exclude(File.join(Bundler.settings[:path], "/**/*")) if defined?(Bundler) && Bundler.settings[:path]
+        fl.exclude(File.join(bundle_path, "/**/*"))
       end
     end
   end
