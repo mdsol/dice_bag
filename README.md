@@ -1,3 +1,7 @@
+# :fire: :boom: :bomb: :boom: :fire: DEPRECATION NOTICE :fire: :boom: :bomb: :boom: :fire:
+
+THIS GEM IS DEPRECATED!
+
 # DiceBag
 
 [![Build Status](https://travis-ci.com/mdsol/dice_bag.svg?branch=develop)](https://travis-ci.com/mdsol/dice_bag)
